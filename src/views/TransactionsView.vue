@@ -43,7 +43,6 @@
                             <th class="px-6 py-4">Label</th>
                             <th class="px-6 py-4">Category</th>
                             <th class="px-6 py-4 text-right">Amount</th>
-                            <th class="px-6 py-4 text-center">Status</th>
                             <th class="px-6 py-4"></th>
                         </tr>
                     </thead>
@@ -61,16 +60,6 @@
                             </td>
                             <td :class="['px-6 py-4 text-sm font-bold text-right', tx.amount < 0 ? 'text-rose-600' : 'text-emerald-600']">
                                 {{ tx.amount < 0 ? '-' : '+' }}${{ Math.abs(tx.amount).toFixed(2) }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center">
-                                    <span :class="[
-                                        'px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide',
-                                        tx.status === 'Completed' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
-                                    ]">
-                                        {{ tx.status }}
-                                    </span>
-                                </div>
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <button class="text-slate-400 hover:text-slate-600 transition-colors">
@@ -101,10 +90,10 @@
 import { ref } from 'vue';
 
 const transactions = ref([
-    { id: 1, date: 'Feb 21, 2026', label: 'Apple Store Online', category: 'Technology', amount: -999.00, status: 'Completed' },
-    { id: 2, date: 'Feb 20, 2026', label: 'Freelance Payout', category: 'Income', amount: 2500.00, status: 'Completed' },
-    { id: 3, date: 'Feb 19, 2026', label: 'Starbucks Coffee', category: 'Food & Drink', amount: -6.50, status: 'Pending' },
-    { id: 4, date: 'Feb 18, 2026', label: 'Netflix Subscription', category: 'Entertainment', amount: -15.99, status: 'Completed' },
-    { id: 5, date: 'Feb 18, 2026', label: 'Monthly Rent', category: 'Housing', amount: -1200.00, status: 'Completed' },
+    { id: 1, date: 'Feb 21, 2026', label: 'Apple Store Online', category: 'Technology', amount: -999.00 },
+    { id: 2, date: 'Feb 20, 2026', label: 'Freelance Payout', category: 'Income', amount: 2500.00 },
+    { id: 3, date: 'Feb 19, 2026', label: 'Starbucks Coffee', category: 'Food & Drink', amount: -6.50 },
+    { id: 4, date: 'Feb 18, 2026', label: 'Netflix Subscription', category: 'Entertainment', amount: -15.99 },
+    { id: 5, date: 'Feb 18, 2026', label: 'Monthly Rent', category: 'Housing', amount: -1200.00 },
 ]);
 </script>
