@@ -6,11 +6,17 @@
         <p class="text-slate-500 text-sm">Track your spending efficiency.</p>
       </div>
       <button
-        class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2">
+        @click="setToggleDialog()"
+        class="cursor-pointer bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2">
         <i class="pi pi-plus"></i>
         Add Expense
       </button>
     </header>
+    <AddExpense 
+      v-if="isOpen" 
+      :is-open="isOpen"
+      @prop-is-open="handlePropIsOpen"
+    />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
@@ -95,6 +101,19 @@
 </template>
 
 <script setup>
+import {ref} from 'vue';
+import AddExpense from '@/components/AddExpense.vue'
+
+const isOpen = ref(false)
+
+const setToggleDialog = () => {
+  isOpen.value === true ? isOpen.value = false : isOpen.value = true
+}
+
+const handlePropIsOpen = (nodeData) => {
+  isOpen.value = nodeData
+}
+
 const recentItems = [
   { id: 1, label: 'Adobe Subscription', date: '2 hours ago', icon: 'pi-desktop', amount: -52.00, bg: 'bg-orange-100 text-orange-600' },
   { id: 2, label: 'Apple Store', date: 'Yesterday', icon: 'pi-apple', amount: -129.00, bg: 'bg-slate-100 text-slate-800' },
