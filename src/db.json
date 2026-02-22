@@ -1,0 +1,126 @@
+{
+    "user": {
+        "name": "Alex Doe",
+        "baseCurrency": "USD",
+        "monthlyBudget": 5000.00
+    },
+    "accounts": [
+        {
+            "id": "acc_01",
+            "name": "Main Checking",
+            "bank": "Chase",
+            "balance": 4250.75,
+            "type": "Checking",
+            "color": "#4F46E5"
+        },
+        {
+            "id": "acc_02",
+            "name": "Savings",
+            "bank": "Marcus",
+            "balance": 12800.00,
+            "type": "Savings",
+            "color": "#10B981"
+        },
+        {
+            "id": "acc_03",
+            "name": "Amex Gold",
+            "bank": "American Express",
+            "balance": -450.20,
+            "type": "Credit",
+            "color": "#F59E0B"
+        }
+    ],
+    "categories": [
+        {
+            "id": "cat_food",
+            "name": "Food & Drink",
+            "icon": "pi-utensils",
+            "color": "#EF4444"
+        },
+        {
+            "id": "cat_transport",
+            "name": "Transport",
+            "icon": "pi-car",
+            "color": "orange"
+        },
+        {
+            "id": "cat_housing",
+            "name": "Housing",
+            "icon": "pi-home",
+            "color": "#3B82F6"
+        },
+        {
+            "id": "cat_ent",
+            "name": "Entertainment",
+            "icon": "pi-video",
+            "color": "#8B5CF6"
+        },
+        {
+            "id": "cat_shopping",
+            "name": "Shopping",
+            "icon": "pi-shopping-bag",
+            "color": "#EC4899"
+        }
+    ],
+    "subscriptions": [
+        {
+            "id": "sub_01",
+            "name": "Netflix",
+            "amount": 15.99,
+            "frequency": "Monthly",
+            "nextBillingDate": "2026-03-12",
+            "categoryId": "cat_ent",
+            "accountId": "acc_03",
+            "active": true
+        },
+        {
+            "id": "sub_02",
+            "name": "Spotify Family",
+            "amount": 16.99,
+            "frequency": "Monthly",
+            "nextBillingDate": "2026-03-01",
+            "categoryId": "cat_ent",
+            "accountId": "acc_03",
+            "active": true
+        },
+        {
+            "id": "sub_03",
+            "name": "Amazon Prime",
+            "amount": 139.00,
+            "frequency": "Yearly",
+            "nextBillingDate": "2026-11-20",
+            "categoryId": "cat_shopping",
+            "accountId": "acc_01",
+            "active": true
+        }
+    ],
+    "transactions": [
+        {
+            "id": "tx_101",
+            "amount": 55.40,
+            "description": "Whole Foods Market",
+            "date": "2026-02-21T14:30:00Z",
+            "categoryId": "cat_food",
+            "accountId": "acc_01",
+            "type": "Expense"
+        },
+        {
+            "id": "tx_102",
+            "amount": 12.00,
+            "description": "Uber Ride",
+            "date": "2026-02-22T09:15:00Z",
+            "categoryId": "cat_transport",
+            "accountId": "acc_03",
+            "type": "Expense"
+        },
+        {
+            "id": "tx_103",
+            "amount": 3500.00,
+            "description": "Monthly Salary",
+            "date": "2026-02-01T08:00:00Z",
+            "categoryId": "cat_housing",
+            "accountId": "acc_01",
+            "type": "Income"
+        }
+    ]
+}
