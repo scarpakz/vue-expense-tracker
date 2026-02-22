@@ -20,11 +20,14 @@
         </div>
 
         <nav class="flex-1 space-y-2">
-          <a v-for="item in navItems" :key="item.name" href="#" 
-             class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all hover:bg-slate-800 text-slate-300 hover:text-white group">
+          <RouterLink 
+            v-for="item in navItems" 
+            :key="item.name"
+            :to="{ name: item.pathName }"
+            class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all hover:bg-slate-800 text-slate-300 hover:text-white group">
             <i :class="['pi', item.icon, 'text-lg group-hover:text-emerald-400']"></i>
             <span class="font-medium text-sm">{{ item.name }}</span>
-          </a>
+          </RouterLink>
         </nav>
 
         <div class="pt-4 mt-4 border-t border-slate-800">
@@ -54,14 +57,14 @@
 
 <script setup>
 import { ref } from 'vue';
-import { RouterView } from 'vue-router';
+import { RouterView, RouterLink } from 'vue-router';
 
 const isMobileMenuOpen = ref(false);
 
 const navItems = [
-  { name: 'Dashboard', icon: 'pi-home' },
-  { name: 'Transactions', icon: 'pi-list' },
-  { name: 'Reports', icon: 'pi-chart-bar' },
-  { name: 'Settings', icon: 'pi-cog' },
+  { name: 'Dashboard', icon: 'pi-home', pathName: 'home' },
+  { name: 'Transactions', icon: 'pi-list', pathName: 'transactions' },
+  { name: 'Reports', icon: 'pi-chart-bar', pathName: 'reports' },
+  { name: 'Settings', icon: 'pi-cog', pathName: 'settings' },
 ];
 </script>
