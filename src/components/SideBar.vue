@@ -33,10 +33,10 @@
         <div class="pt-4 mt-4 border-t border-slate-800">
           <div class="flex items-center gap-3 px-2">
             <div class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-900 text-xs">
-              JJ
+              {{initials}}
             </div>
             <div class="overflow-hidden">
-              <p class="text-sm font-medium truncate">Jason Javier</p>
+              <p class="text-sm font-medium truncate">{{ props.user?.name }}</p>
               <p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Premium</p>
             </div>
             <i class="pi pi-sign-out ml-auto text-slate-500 hover:text-white cursor-pointer"></i>
@@ -56,8 +56,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineProps, onMounted, computed } from 'vue';
 import { RouterView, RouterLink } from 'vue-router';
+
+const props = defineProps({
+  user: {
+    type: Object,
+    default: () => ({ name: 'Anonymous' })
+  }
+})
 
 const isMobileMenuOpen = ref(false);
 
@@ -67,4 +74,10 @@ const navItems = [
   { name: 'Reports', icon: 'pi-chart-bar', pathName: 'reports' },
   { name: 'Settings', icon: 'pi-cog', pathName: 'settings' },
 ];
+
+const initials = computed(() => {
+  return props.user?.name?.split(' ').map(word => word[0]).join('')
+})
+
+
 </script>
