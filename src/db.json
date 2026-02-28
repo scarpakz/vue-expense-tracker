@@ -141,10 +141,60 @@
     ],
     "transactions": [
         {
-            "id": "tx_101",
+            "id": "tx_14211",
             "userId": "user_01",
             "amount": 55.40,
             "description": "Whole Foods Market",
+            "date": "2026-02-21T14:30:00Z",
+            "categoryId": "cat_food",
+            "accountId": "acc_01",
+            "type": "Expense"
+        },
+        {
+            "id": "tx_102",
+            "userId": "user_02",
+            "amount": 12.00,
+            "description": "Uber Ride",
+            "date": "2026-02-22T09:15:00Z",
+            "categoryId": "cat_transport",
+            "accountId": "acc_02",
+            "type": "Expense"
+        },
+        {
+            "id": "tx_103",
+            "userId": "user_03",
+            "amount": 3500.00,
+            "description": "Freelance Payment",
+            "date": "2026-02-01T08:00:00Z",
+            "categoryId": "cat_invest",
+            "accountId": "acc_03",
+            "type": "Income"
+        },
+        {
+            "id": "tx_104",
+            "userId": "user_04",
+            "amount": 1800.00,
+            "description": "Monthly Rent",
+            "date": "2026-02-01T08:00:00Z",
+            "categoryId": "cat_housing",
+            "accountId": "acc_04",
+            "type": "Expense"
+        },
+        {
+            "id": "tx_105",
+            "userId": "user_05",
+            "amount": 5000.00,
+            "description": "Stock Dividend",
+            "date": "2026-02-15T10:00:00Z",
+            "categoryId": "cat_invest",
+            "accountId": "acc_05",
+            "type": "Income"
+        },
+        {
+            "id": "tx_101",
+            "userId": "user_01",
+            "amount": 241.40,
+            "description": "Just Market",
             "date": "2026-02-21T14:30:00Z",
             "categoryId": "cat_food",
             "accountId": "acc_01",

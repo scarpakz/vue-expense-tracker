@@ -50,7 +50,6 @@
       @click="isMobileMenuOpen = false" 
       class="fixed inset-0 bg-black/60 z-30 lg:hidden backdrop-blur-sm"
     ></div>
-
     <RouterView />
   </div>
 </template>

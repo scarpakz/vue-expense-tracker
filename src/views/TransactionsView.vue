@@ -16,7 +16,6 @@
                 </button>
             </div>
         </header>
-    
         <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
             <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row justify-between gap-4 bg-slate-50/50">
                 <div class="relative w-full sm:w-64">
@@ -47,10 +46,11 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
+                        <!-- {{ transactions }} -->
                         <tr v-for="tx in transactions" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
                             <td class="px-6 py-4 text-sm text-slate-500">{{ tx.date }}</td>
                             <td class="px-6 py-4">
-                                <div class="font-medium text-slate-800 text-sm">{{ tx.label }}</div>
+                                <div class="font-medium text-slate-800 text-sm">{{ tx.description }}</div>
                                 <div class="text-xs text-slate-400 sm:hidden">{{ tx.category }}</div>
                             </td>
                             <td class="px-6 py-4 hidden sm:table-cell">
@@ -87,13 +87,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
+import { useTransactionStore } from '@/stores/transaction.js'
+import { useUserStore } from '@/stores/user';
 
-const transactions = ref([
-    { id: 1, date: 'Feb 21, 2026', label: 'Apple Store Online', category: 'Technology', amount: -999.00 },
-    { id: 2, date: 'Feb 20, 2026', label: 'Freelance Payout', category: 'Income', amount: 2500.00 },
-    { id: 3, date: 'Feb 19, 2026', label: 'Starbucks Coffee', category: 'Food & Drink', amount: -6.50 },
-    { id: 4, date: 'Feb 18, 2026', label: 'Netflix Subscription', category: 'Entertainment', amount: -15.99 },
-    { id: 5, date: 'Feb 18, 2026', label: 'Monthly Rent', category: 'Housing', amount: -1200.00 },
-]);
+const s_transaction = useTransactionStore()
+const s_user = useUserStore()
+let transactions = ref([])
+
+// mockup
+// const transactions = ref([
+//     { id: 1, date: 'Feb 21, 2026', label: 'Apple Store Online', category: 'Technology', amount: -999.00 },
+//     { id: 2, date: 'Feb 20, 2026', label: 'Freelance Payout', category: 'Income', amount: 2500.00 },
+//     { id: 3, date: 'Feb 19, 2026', label: 'Starbucks Coffee', category: 'Food & Drink', amount: -6.50 },
+//     { id: 4, date: 'Feb 18, 2026', label: 'Netflix Subscription', category: 'Entertainment', amount: -15.99 },
+//     { id: 5, date: 'Feb 18, 2026', label: 'Monthly Rent', category: 'Housing', amount: -1200.00 },
+// ]);
+// TODO: combine category and fix date on display
+const processTransactionData = async () => {
+    transactions.value = await s_transaction.getUserTransactions
+}
+
+onMounted(async () => {
+    await s_transaction.setUserTransactionData(s_user.getUser.id)
+    await processTransactionData()
+})
+
+
 </script>
