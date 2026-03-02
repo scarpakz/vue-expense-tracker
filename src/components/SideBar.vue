@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { RouterView, RouterLink } from 'vue-router';
 
 const props = defineProps({

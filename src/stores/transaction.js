@@ -31,6 +31,8 @@ export const useTransactionStore = defineStore('transaction', () => {
             }
         } catch(e) {
             console.error(e)
+        } finally {
+            console.log(data)
         }
     }
 

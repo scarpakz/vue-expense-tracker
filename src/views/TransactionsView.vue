@@ -47,8 +47,8 @@
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         <!-- {{ transactions }} -->
-                        <tr v-for="tx in transactions" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
-                            <td class="px-6 py-4 text-sm text-slate-500">{{ tx.date }}</td>
+                        <tr v-for="tx in transactions.userTransactions" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
+                            <td class="px-6 py-4 text-sm text-slate-500">{{ useDateFormatter(tx.date) }}</td>
                             <td class="px-6 py-4">
                                 <div class="font-medium text-slate-800 text-sm">{{ tx.description }}</div>
                                 <div class="text-xs text-slate-400 sm:hidden">{{ tx.category }}</div>
@@ -90,6 +90,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { useTransactionStore } from '@/stores/transaction.js'
 import { useUserStore } from '@/stores/user';
+import { useDateFormatter } from '@/composable/dateFormatter.js'
 
 const s_transaction = useTransactionStore()
 const s_user = useUserStore()
