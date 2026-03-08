@@ -42,16 +42,19 @@ export const useTransactionStore = defineStore('transaction', () => {
         try {
             const categoryMap = {}
             data.userCategories.forEach(cat_item => {
-                categoryMap[cat_item.id] = cat_item.name
-            })
-
-            const filterDataTransaction = data.userTransactions.map(transaction => {
-                return {
-                    ...transaction,
-                    categoryName: categoryMap[transaction.categoryId] || 'Not Assigned'
+                categoryMap[cat_item.id] = {
+                    name: cat_item.name,
+                    image: cat_item.bgImage
                 }
             })
-            
+            const filterDataTransaction = data.userTransactions.map(transaction => {
+                const catData = categoryMap[transaction.categoryId]
+                return {
+                    ...transaction,
+                    categoryName: catData ? catData.name : 'Not Assigned',
+                    bgImage: catData ? catData.image : ''
+                }
+            })
             userData.value = filterDataTransaction
         } catch(e) {
             console.log(e)

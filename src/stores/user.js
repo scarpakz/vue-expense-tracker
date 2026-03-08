@@ -22,6 +22,7 @@ export const useUserStore = defineStore('user', () => {
     // setter
     async function initializeData () {
         try {
+            // TODO: Get user accounts to display total balance
             const response = await axios.get(`${config.appBackend}/users`)
             const filterUser = response.data.filter((item) => {
                 return mockup.userId === item.id
