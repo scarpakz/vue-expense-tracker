@@ -10,7 +10,7 @@
             <div class="flex items-center gap-4">
               <img :class="['w-10 h-10 rounded-lg flex items-center justify-center text-lg']" :src="item.bgImage" />
               <div>
-                <p class="text-sm font-semibold text-slate-800">{{ item.categoryName }}</p>
+                <p class="text-sm font-semibold text-slate-800">{{ item.categoryName + " - " + item.description  }}</p>
                 <p class="text-xs text-slate-500">{{ useDateFormatter(item.date) }}</p>
               </div>
             </div>
