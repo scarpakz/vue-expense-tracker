@@ -10,8 +10,10 @@ export const useTransactionStore = defineStore('transaction', () => {
         userSubscriptions: []
     })
 
+    let userData = ref([])
+
     const getUserTransactions = computed(() => {
-        return data
+        return userData.value
     })
 
     const setUserTransactionData = async (userId) => {
@@ -31,6 +33,28 @@ export const useTransactionStore = defineStore('transaction', () => {
             }
         } catch(e) {
             console.error(e)
+        } finally {
+            setCombineTransactionAndCategory()
+        }
+    }
+
+    const setCombineTransactionAndCategory = async () => {
+        try {
+            const categoryMap = {}
+            data.userCategories.forEach(cat_item => {
+                categoryMap[cat_item.id] = cat_item.name
+            })
+
+            const filterDataTransaction = data.userTransactions.map(transaction => {
+                return {
+                    ...transaction,
+                    categoryName: categoryMap[transaction.categoryId] || 'Not Assigned'
+                }
+            })
+            
+            userData.value = filterDataTransaction
+        } catch(e) {
+            console.log(e)
         }
     }
 
