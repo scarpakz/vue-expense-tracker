@@ -80,13 +80,6 @@
     ],
     "categories": [
         {
-            "id": "cat_food",
-            "userId": "user_01",
-            "name": "Food & Drink",
-            "icon": "pi pi-utensils",
-            "color": "#EF4444"
-        },
-        {
             "id": "cat_transport",
             "userId": "user_02",
             "name": "Transport",
@@ -102,10 +95,17 @@
         },
         {
             "id": "cat_housing",
-            "userId": "user_04",
+            "userId": "user_01",
             "name": "Housing",
             "icon": "pi pi-home",
             "color": "#3B82F6"
+        },
+        {
+            "id": "cat_food",
+            "userId": "user_01",
+            "name": "Food & Drink",
+            "icon": "pi pi-utensils",
+            "color": "#EF4444"
         },
         {
             "id": "cat_invest",
@@ -196,7 +196,7 @@
             "amount": 241.40,
             "description": "Just Market",
             "date": "2026-02-21T14:30:00Z",
-            "categoryId": "cat_food",
+            "categoryId": "cat_housing",
             "accountId": "acc_01",
             "type": "Expense"
         },
