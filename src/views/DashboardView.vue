@@ -35,7 +35,7 @@
         </div>
         <div>
           <p class="text-xs text-slate-500 font-bold uppercase tracking-tight">Monthly Income</p>
-          <p class="text-xl font-bold text-slate-800">$4,200.00</p>
+          <p class="text-xl font-bold text-slate-800">${{ s_user.getUser.monthlyIncome.toLocaleString() }}</p>
         </div>
       </div>
 
@@ -51,29 +51,7 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <div class="p-5 border-b border-slate-100 flex justify-between items-center">
-          <h2 class="font-bold text-slate-800">Recent Transactions</h2>
-          <button class="text-sm text-emerald-600 font-semibold hover:underline">View All</button>
-        </div>
-        <div class="divide-y divide-slate-50">
-          <div v-for="item in recentItems" :key="item.id"
-            class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
-            <div class="flex items-center gap-4">
-              <div :class="['w-10 h-10 rounded-lg flex items-center justify-center text-lg', item.bg]">
-                <i :class="['pi', item.icon]"></i>
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-slate-800">{{ item.label }}</p>
-                <p class="text-xs text-slate-500">{{ item.date }}</p>
-              </div>
-            </div>
-            <p :class="['font-bold text-sm', item.amount < 0 ? 'text-rose-600' : 'text-emerald-600']">
-              {{ item.amount < 0 ? '-' : '+' }}${{ Math.abs(item.amount) }}
-            </p>
-          </div>
-        </div>
-      </div>
+      <RecentTransactions :user-transactions="getTransactions"/>
 
       <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
         <h2 class="font-bold text-slate-800 mb-6">Budget Overview</h2>
@@ -101,10 +79,16 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {ref, onMounted, computed} from 'vue';
 import AddExpense from '@/components/AddExpense.vue'
+import RecentTransactions from '@/components/RecentTransactions.vue'
+import { useTransactionStore } from '@/stores/transaction';
+import { useUserStore } from '@/stores/user';
 
 const isOpen = ref(false)
+
+const s_transaction = useTransactionStore()
+const s_user = useUserStore()
 
 const setToggleDialog = () => {
   isOpen.value === true ? isOpen.value = false : isOpen.value = true
@@ -114,17 +98,18 @@ const handlePropIsOpen = (nodeData) => {
   isOpen.value = nodeData
 }
 
-const recentItems = [
-  { id: 1, label: 'Adobe Subscription', date: '2 hours ago', icon: 'pi-desktop', amount: -52.00, bg: 'bg-orange-100 text-orange-600' },
-  { id: 2, label: 'Apple Store', date: 'Yesterday', icon: 'pi-apple', amount: -129.00, bg: 'bg-slate-100 text-slate-800' },
-  { id: 3, label: 'Freelance Payout', date: 'Feb 20', icon: 'pi-money-bill', amount: 850.00, bg: 'bg-emerald-100 text-emerald-600' },
-  { id: 4, label: 'Gas Station', date: 'Feb 19', icon: 'pi-car', amount: -45.00, bg: 'bg-blue-100 text-blue-600' },
-];
-
 const categories = [
   { name: 'Food & Drinks', percent: 65, color: 'bg-orange-500' },
   { name: 'Entertainment', percent: 40, color: 'bg-purple-500' },
   { name: 'Shopping', percent: 15, color: 'bg-blue-500' },
   { name: 'Transport', percent: 85, color: 'bg-emerald-500' },
 ];
+
+const getTransactions = computed(() => {
+  return s_transaction.getUserTransactions
+})
+
+onMounted(async () => {
+  await s_transaction.setUserTransactionData(s_user.getUser.id)
+})
 </script>
