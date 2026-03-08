@@ -7,7 +7,8 @@ export const useUserStore = defineStore('user', () => {
     // state
     let user = reactive({})
     const mockup = reactive({
-        userId: 'user_01'
+        userId: 'user_01',
+        isLoggedOn: false
     })
 
     // use functions for actions, e.g function ()
@@ -15,6 +16,8 @@ export const useUserStore = defineStore('user', () => {
     const getUser = computed(() => {
         return user
     })
+
+    const getIsLoggedOn = computed(() => mockup.isLoggedOn)
 
     // setter
     async function initializeData () {
@@ -24,11 +27,15 @@ export const useUserStore = defineStore('user', () => {
                 return mockup.userId === item.id
             })
             user = filterUser[0]
+            if (user) {
+                mockup.isLoggedOn = true
+            }
         } catch(e) { console.log(e) }
     }
 
     return {
         getUser,
+        getIsLoggedOn,
         initializeData
     }
 })

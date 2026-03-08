@@ -69,9 +69,7 @@
 <script setup>
 import { 
     ref, 
-    reactive, 
-    defineProps,
-    defineEmits
+    reactive,
 } from 'vue';
 
 defineProps({

@@ -50,13 +50,12 @@
       @click="isMobileMenuOpen = false" 
       class="fixed inset-0 bg-black/60 z-30 lg:hidden backdrop-blur-sm"
     ></div>
-
     <RouterView />
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { RouterView, RouterLink } from 'vue-router';
 
 const props = defineProps({

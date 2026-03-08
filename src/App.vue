@@ -1,11 +1,13 @@
 <template>
-  <SideBar :user="user" />
+  <SideBar :user="user" v-if="store.getIsLoggedOn"/>
+  <NotFoundView v-else/>
 </template>
 
 <script setup>
 import { useUserStore } from '@/stores/user.js'
 import { onMounted, ref } from 'vue';
 import SideBar from './components/SideBar.vue';
+import NotFoundView from './views/NotFoundView.vue';
 
 const store = useUserStore()
 const user = ref({})
