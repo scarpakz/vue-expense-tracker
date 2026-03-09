@@ -25,7 +25,7 @@
         </div>
         <div>
           <p class="text-xs text-slate-500 font-bold uppercase tracking-tight">Total Balance</p>
-          <p class="text-xl font-bold text-slate-800">$12,450.00</p>
+          <p class="text-xl font-bold text-slate-800">${{ s_user.getUser.balance.toLocaleString() }}</p>
         </div>
       </div>
 

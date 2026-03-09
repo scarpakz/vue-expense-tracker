@@ -42,6 +42,15 @@
             "color": "#4F46E5"
         },
         {
+            "id": "acc_06",
+            "userId": "user_01",
+            "name": "Main Savings",
+            "bank": "RBC",
+            "balance": 15050.15,
+            "type": "Checking",
+            "color": "#4F46E5"
+        },
+        {
             "id": "acc_02",
             "userId": "user_02",
             "name": "Savings Account",
