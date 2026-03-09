@@ -22,16 +22,32 @@ export const useUserStore = defineStore('user', () => {
     // setter
     async function initializeData () {
         try {
-            // TODO: Get user accounts to display total balance
-            const response = await axios.get(`${config.appBackend}/users`)
-            const filterUser = response.data.filter((item) => {
+            const users = await axios.get(`${config.appBackend}/users`)
+            const userAccounts = await axios.get(`${config.appBackend}/accounts`)
+
+            const filterUser = users.data.filter((item) => {
                 return mockup.userId === item.id
             })
-            user = filterUser[0]
+            const filterUserAccounts = userAccounts.data.filter(item => item.userId === mockup.userId).map(item => item.balance)
+            const totalBalance = filterUserAccounts.reduce(getSum, 0)
+            
+            const newData = filterUser.map((item) => {
+                return {
+                    ...item,
+                    balance: totalBalance
+                }
+            })
+
+            user = newData[0]
+            
             if (user) {
                 mockup.isLoggedOn = true
             }
         } catch(e) { console.log(e) }
+    }
+
+    const getSum = (newTotal, num) => {
+        return newTotal + num
     }
 
     return {
