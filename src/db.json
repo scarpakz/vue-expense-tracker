@@ -145,105 +145,25 @@
         }
     ],
     "transactions": [
-        {
-            "id": "tx_14211",
-            "userId": "user_01",
-            "amount": 55.40,
-            "description": "Whole Foods Market",
-            "date": "2026-02-21T14:30:00Z",
-            "categoryId": "cat_food",
-            "accountId": "acc_01",
-            "type": "Expense"
-        },
-        {
-            "id": "tx_102",
-            "userId": "user_02",
-            "amount": 12.00,
-            "description": "Uber Ride",
-            "date": "2026-02-22T09:15:00Z",
-            "categoryId": "cat_transport",
-            "accountId": "acc_02",
-            "type": "Expense"
-        },
-        {
-            "id": "tx_103",
-            "userId": "user_03",
-            "amount": 3500.00,
-            "description": "Freelance Payment",
-            "date": "2026-02-01T08:00:00Z",
-            "categoryId": "cat_invest",
-            "accountId": "acc_03",
-            "type": "Income"
-        },
-        {
-            "id": "tx_104",
-            "userId": "user_04",
-            "amount": 1800.00,
-            "description": "Monthly Rent",
-            "date": "2026-02-01T08:00:00Z",
-            "categoryId": "cat_housing",
-            "accountId": "acc_04",
-            "type": "Expense"
-        },
-        {
-            "id": "tx_105",
-            "userId": "user_05",
-            "amount": 5000.00,
-            "description": "Stock Dividend",
-            "date": "2026-02-15T10:00:00Z",
-            "categoryId": "cat_invest",
-            "accountId": "acc_05",
-            "type": "Income"
-        },
-        {
-            "id": "tx_101",
-            "userId": "user_01",
-            "amount": 241.40,
-            "description": "Just Market",
-            "date": "2026-02-21T14:30:00Z",
-            "categoryId": "cat_housing",
-            "accountId": "acc_01",
-            "type": "Expense"
-        },
-        {
-            "id": "tx_102",
-            "userId": "user_02",
-            "amount": 42.00,
-            "description": "Uber Rides",
-            "date": "2026-02-22T09:15:00Z",
-            "categoryId": "cat_transport",
-            "accountId": "acc_02",
-            "type": "Expense"
-        },
-        {
-            "id": "tx_103",
-            "userId": "user_03",
-            "amount": 3500.00,
-            "description": "Freelance Payment",
-            "date": "2026-02-01T08:00:00Z",
-            "categoryId": "cat_invest",
-            "accountId": "acc_03",
-            "type": "Income"
-        },
-        {
-            "id": "tx_104",
-            "userId": "user_04",
-            "amount": 1800.00,
-            "description": "Monthly Rent",
-            "date": "2026-02-01T08:00:00Z",
-            "categoryId": "cat_housing",
-            "accountId": "acc_04",
-            "type": "Expense"
-        },
-        {
-            "id": "tx_105",
-            "userId": "user_05",
-            "amount": 5000.00,
-            "description": "Stock Dividend",
-            "date": "2026-02-15T10:00:00Z",
-            "categoryId": "cat_invest",
-            "accountId": "acc_05",
-            "type": "Income"
-        }
+        { "id": "tx_201", "userId": "user_01", "amount": 12.50, "description": "Morning Coffee", "date": "2026-03-01T08:30:00Z", "categoryId": "cat_food", "accountId": "acc_01", "type": "Expense" },
+        { "id": "tx_202", "userId": "user_01", "amount": 45.00, "description": "Gas Station", "date": "2026-03-02T17:45:00Z", "categoryId": "cat_transport", "accountId": "acc_01", "type": "Expense" },
+        { "id": "tx_203", "userId": "user_02", "amount": 85.20, "description": "Grocery Haul", "date": "2026-03-02T12:00:00Z", "categoryId": "cat_food", "accountId": "acc_02", "type": "Expense" },
+        { "id": "tx_204", "userId": "user_03", "amount": 120.00, "description": "Concert Tickets", "date": "2026-03-03T19:00:00Z", "categoryId": "cat_ent", "accountId": "acc_03", "type": "Expense" },
+        { "id": "tx_205", "userId": "user_05", "amount": 250.00, "description": "Quarterly Dividend", "date": "2026-03-04T10:00:00Z", "categoryId": "cat_invest", "accountId": "acc_05", "type": "Income" },
+        { "id": "tx_206", "userId": "user_04", "amount": 45.00, "description": "Train Pass", "date": "2026-03-04T08:00:00Z", "categoryId": "cat_transport", "accountId": "acc_04", "type": "Expense" },
+        { "id": "tx_207", "userId": "user_01", "amount": 5000.00, "description": "Monthly Salary", "date": "2026-03-01T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_01", "type": "Income" },
+        { "id": "tx_208", "userId": "user_02", "amount": 35.00, "description": "Cinema", "date": "2026-03-05T21:30:00Z", "categoryId": "cat_ent", "accountId": "acc_02", "type": "Expense" },
+        { "id": "tx_209", "userId": "user_03", "amount": 65.40, "description": "Dinner Out", "date": "2026-03-05T20:00:00Z", "categoryId": "cat_food", "accountId": "acc_03", "type": "Expense" },
+        { "id": "tx_210", "userId": "user_04", "amount": 20.00, "description": "Streaming Sub", "date": "2026-03-06T11:00:00Z", "categoryId": "cat_ent", "accountId": "acc_04", "type": "Expense" },
+        { "id": "tx_211", "userId": "user_05", "amount": 1500.00, "description": "Crypto Gain", "date": "2026-03-06T15:00:00Z", "categoryId": "cat_invest", "accountId": "acc_05", "type": "Income" },
+        { "id": "tx_212", "userId": "user_01", "amount": 140.00, "description": "Electric Bill", "date": "2026-03-07T10:00:00Z", "categoryId": "cat_housing", "accountId": "acc_01", "type": "Expense" },
+        { "id": "tx_213", "userId": "user_02", "amount": 4200.00, "description": "Monthly Salary", "date": "2026-03-01T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_02", "type": "Income" },
+        { "id": "tx_214", "userId": "user_03", "amount": 30.00, "description": "Taxi", "date": "2026-03-07T23:00:00Z", "categoryId": "cat_transport", "accountId": "acc_03", "type": "Expense" },
+        { "id": "tx_215", "userId": "user_04", "amount": 55.00, "description": "Water Bill", "date": "2026-03-08T09:00:00Z", "categoryId": "cat_housing", "accountId": "acc_04", "type": "Expense" },
+        { "id": "tx_216", "userId": "user_05", "amount": 300.00, "description": "New Desk Chair", "date": "2026-03-08T14:00:00Z", "categoryId": "cat_housing", "accountId": "acc_05", "type": "Expense" },
+        { "id": "tx_217", "userId": "user_01", "amount": 25.00, "description": "Lunch Special", "date": "2026-03-09T13:00:00Z", "categoryId": "cat_food", "accountId": "acc_01", "type": "Expense" },
+        { "id": "tx_218", "userId": "user_02", "amount": 15.00, "description": "Parking Fee", "date": "2026-03-09T10:00:00Z", "categoryId": "cat_transport", "accountId": "acc_02", "type": "Expense" },
+        { "id": "tx_219", "userId": "user_03", "amount": 6500.00, "description": "Consulting Fee", "date": "2026-03-01T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_03", "type": "Income" },
+        { "id": "tx_220", "userId": "user_04", "amount": 12.00, "description": "Bakery", "date": "2026-03-09T08:30:00Z", "categoryId": "cat_food", "accountId": "acc_04", "type": "Expense" }
     ]
 }

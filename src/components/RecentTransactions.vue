@@ -2,7 +2,7 @@
     <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="p-5 border-b border-slate-100 flex justify-between items-center">
           <h2 class="font-bold text-slate-800">Recent Transactions</h2>
-          <button class="text-sm text-emerald-600 font-semibold hover:underline">View All</button>
+          <RouterLink :to="{ name: 'transactions' }" class="text-sm text-emerald-600 font-semibold hover:underline">View All</RouterLink>
         </div>
         <div class="divide-y divide-slate-50">
           <div v-for="item in userTransactions" :key="item.id"
