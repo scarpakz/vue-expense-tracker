@@ -45,7 +45,7 @@
         </div>
         <div>
           <p class="text-xs text-slate-500 font-bold uppercase tracking-tight">Monthly Expenses</p>
-          <p class="text-xl font-bold text-slate-800">$1,840.00</p>
+          <p class="text-xl font-bold text-slate-800">${{ monthlyExpensesTotal.toLocaleString(undefined, { minimumFractionDigits: 2 }) }}</p>
         </div>
       </div>
     </div>
@@ -84,6 +84,17 @@ const handlePropIsOpen = (nodeData) => {
 const getTransactions = async () => {
   transactions.value = await s_transaction.getUserTransactions
 }
+const monthlyExpensesTotal = computed(() => {
+  	const now = new Date();
+  	return s_transaction.getUserTransactions
+      	.filter(item => {
+			const d = new Date(item.date);
+			return item.type === 'Expense' &&
+				d.getMonth() === now.getMonth() &&
+				d.getFullYear() === now.getFullYear();
+		})
+		.reduce((acc, curr) => acc + curr.amount, 0);
+});
 
 onMounted(async () => {
   await s_transaction.setUserTransactionData(s_user.getUser.id)
