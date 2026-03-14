@@ -12,7 +12,6 @@
             <select v-model="selectedCategory" class="px-3 py-2 bg-white border border-slate-200 rounded-md text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
                 <option v-for="cat in getCategories" :value="cat" :key="cat">{{ cat }}</option>
             </select>
-            
         </div>
 
         <div class="overflow-x-auto">
@@ -27,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
-                    <tr v-for="tx in props.userTransactions" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
+                    <tr v-for="tx in getTransactionByCategory" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
                         <td class="px-6 py-4 text-sm text-slate-500">{{ useDateFormatter(tx.date) }}</td>
                         <td class="px-6 py-4">
                             <div class="font-medium text-slate-800 text-sm">{{ tx.description }}</div>
@@ -65,7 +64,7 @@
 </template>
 <script setup>
 import { useDateFormatter } from '@/composable/dateFormatter.js'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watchEffect } from 'vue'
 
 const props = defineProps({
     userTransactions: {
@@ -75,6 +74,7 @@ const props = defineProps({
 })
 
 const selectedCategory = ref('')
+const transactions = ref([])
 
 const getCategories = computed(() => {
     let filterPropByCategory = props.userTransactions.map(item => item.categoryName)
@@ -87,6 +87,23 @@ const getCategories = computed(() => {
 const setDefaultCategory = () => {
     selectedCategory.value = 'All Categories'
 }
+
+const getTransactionByCategory = computed(() => {
+    return transactions.value
+})
+
+const setTransactionByCategory = () => {
+    transactions.value = props.userTransactions.filter((item) => {
+        if (selectedCategory.value === 'All Categories') {
+            return item
+        }
+        return item.categoryName === selectedCategory.value
+    })
+}
+
+watchEffect(() => {
+    setTransactionByCategory()
+}, [])
 
 onMounted(()=> {
     setDefaultCategory()
