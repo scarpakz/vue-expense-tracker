@@ -3,7 +3,8 @@
         <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row justify-between gap-4 bg-slate-50/50">
             <div class="relative w-full sm:w-64">
                 <i class="pi pi-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input 
+                <input
+                v-model="textSearch" 
                 type="text" 
                 placeholder="Search transactions..." 
                 class="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
@@ -19,7 +20,7 @@
                 <thead>
                     <tr class="bg-slate-50 text-slate-500 uppercase text-[11px] font-bold tracking-wider">
                         <th class="px-6 py-4">Date</th>
-                        <th class="px-6 py-4">Label</th>
+                        <th class="px-6 py-4">Description</th>
                         <th class="px-6 py-4">Category</th>
                         <th class="px-6 py-4 text-right">Amount</th>
                         <th class="px-6 py-4"></th>
@@ -75,6 +76,7 @@ const props = defineProps({
 
 const selectedCategory = ref('')
 const transactions = ref([])
+const textSearch = ref('')
 
 const getCategories = computed(() => {
     let filterPropByCategory = props.userTransactions.map(item => item.categoryName)
@@ -101,8 +103,15 @@ const setTransactionByCategory = () => {
     })
 }
 
+const filterBySearch = () => {
+    transactions.value = transactions.value.filter((item) => {
+        return item.description.toLowerCase().includes(textSearch.value.toLowerCase())
+    })
+}
+
 watchEffect(() => {
     setTransactionByCategory()
+    filterBySearch()
 }, [])
 
 onMounted(()=> {

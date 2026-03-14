@@ -50,6 +50,7 @@ const handleTransactionUpdate = (data) => {
             'bg-cyan-500', 'bg-rose-500', 'bg-amber-500'
         ]
 
+        // TODO: Bug => duplicates on categories
         const filterExpenseType = data.filter(item => item.type === 'Expense').map(num => num.amount)
         const sum = filterExpenseType.reduce(sumUpExpenses, 0)
         const addCalculatedPercentage = data.filter(item => item.type === 'Expense').map((transaction, index) => {
