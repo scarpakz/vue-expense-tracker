@@ -53,7 +53,7 @@
             <Spinner />
         </div>
         <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between text-sm text-slate-500">
-            <span>Showing 1 to 5 of 24 results</span>
+            <span>Showing {{ tableResults.min }} to {{ tableResults.max }} of {{ tableResults.length }} results</span>
             <div class="flex gap-2">
                 <button class="p-2 border border-slate-200 rounded hover:bg-slate-50 disabled:opacity-50" disabled>
                     <i class="pi pi-chevron-left text-xs"></i>
@@ -80,6 +80,11 @@ const props = defineProps({
 const selectedCategory = ref('')
 const transactions = ref([])
 const textSearch = ref('')
+const tableResults = ref({
+    min: 1,
+    max: 5,
+    length: 24
+})
 
 const getCategories = computed(() => {
     let filterPropByCategory = props.userTransactions.map(item => item.categoryName)
@@ -110,6 +115,7 @@ const filterBySearch = () => {
     transactions.value = transactions.value.filter((item) => {
         return item.description.toLowerCase().includes(textSearch.value.toLowerCase())
     })
+    tableResults.value.length = transactions.value.length
 }
 
 watchEffect(() => {
