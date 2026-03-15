@@ -14,8 +14,7 @@
                 <option v-for="cat in getCategories" :value="cat" :key="cat">{{ cat }}</option>
             </select>
         </div>
-
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto" v-if="getTransactions.length">
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-slate-50 text-slate-500 uppercase text-[11px] font-bold tracking-wider">
@@ -27,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
-                    <tr v-for="tx in getTransactionByCategory" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
+                    <tr v-for="tx in getTransactions" :key="tx.id" class="hover:bg-slate-50 transition-colors group">
                         <td class="px-6 py-4 text-sm text-slate-500">{{ useDateFormatter(tx.date) }}</td>
                         <td class="px-6 py-4">
                             <div class="font-medium text-slate-800 text-sm">{{ tx.description }}</div>
@@ -50,6 +49,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="flex justify-center p-4" v-else>
+            <Spinner />
+        </div>
         <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between text-sm text-slate-500">
             <span>Showing 1 to 5 of 24 results</span>
             <div class="flex gap-2">
@@ -66,6 +68,7 @@
 <script setup>
 import { useDateFormatter } from '@/composable/dateFormatter.js'
 import { ref, computed, onMounted, watchEffect } from 'vue'
+import Spinner from '@/components/Spinner.vue'
 
 const props = defineProps({
     userTransactions: {
@@ -90,7 +93,7 @@ const setDefaultCategory = () => {
     selectedCategory.value = 'All Categories'
 }
 
-const getTransactionByCategory = computed(() => {
+const getTransactions = computed(() => {
     return transactions.value
 })
 
