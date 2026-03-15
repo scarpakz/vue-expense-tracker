@@ -1,209 +1,694 @@
 {
-    "users": [
-        {
-            "id": "user_01",
-            "name": "Alex Doe",
-            "baseCurrency": "USD",
-            "monthlyIncome": 5000
-        },
-        {
-            "id": "user_02",
-            "name": "Maria Santos",
-            "baseCurrency": "CAD",
-            "monthlyIncome": 4200
-        },
-        {
-            "id": "user_03",
-            "name": "John Lee",
-            "baseCurrency": "USD",
-            "monthlyIncome": 6500
-        },
-        {
-            "id": "user_04",
-            "name": "Sophie Martin",
-            "baseCurrency": "EUR",
-            "monthlyIncome": 4800
-        },
-        {
-            "id": "user_05",
-            "name": "David Kim",
-            "baseCurrency": "USD",
-            "monthlyIncome": 7200
-        }
-    ],
-    "accounts": [
-        {
-            "id": "acc_01",
-            "userId": "user_01",
-            "name": "Main Checking",
-            "bank": "Chase",
-            "balance": 4250.75,
-            "type": "Checking",
-            "color": "#4F46E5"
-        },
-        {
-            "id": "acc_06",
-            "userId": "user_01",
-            "name": "Main Savings",
-            "bank": "RBC",
-            "balance": 15050.15,
-            "type": "Checking",
-            "color": "#4F46E5"
-        },
-        {
-            "id": "acc_02",
-            "userId": "user_02",
-            "name": "Savings Account",
-            "bank": "TD Canada Trust",
-            "balance": 8200.50,
-            "type": "Savings",
-            "color": "#10B981"
-        },
-        {
-            "id": "acc_03",
-            "userId": "user_03",
-            "name": "Business Account",
-            "bank": "Bank of America",
-            "balance": 15000,
-            "type": "Checking",
-            "color": "#F59E0B"
-        },
-        {
-            "id": "acc_04",
-            "userId": "user_04",
-            "name": "Primary Account",
-            "bank": "BNP Paribas",
-            "balance": 6100,
-            "type": "Checking",
-            "color": "#EF4444"
-        },
-        {
-            "id": "acc_05",
-            "userId": "user_05",
-            "name": "Investment Account",
-            "bank": "Wells Fargo",
-            "balance": 22000,
-            "type": "Investment",
-            "color": "#8B5CF6"
-        }
-    ],
-    "categories": [
-        {
-            "id": "cat_transport",
-            "userId": "user_02",
-            "name": "Transport",
-            "icon": "pi pi-car",
-            "color": "#F97316",
-            "bgImage": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-            "id": "cat_ent",
-            "userId": "user_03",
-            "name": "Entertainment",
-            "icon": "pi pi-video",
-            "color": "#8B5CF6",
-            "bgImage": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-            "id": "cat_housing",
-            "userId": "user_01",
-            "name": "Housing",
-            "icon": "pi pi-home",
-            "color": "#3B82F6",
-            "bgImage": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-            "id": "cat_food",
-            "userId": "user_01",
-            "name": "Food & Drink",
-            "icon": "pi pi-utensils",
-            "color": "#EF4444",
-            "bgImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-            "id": "cat_invest",
-            "userId": "user_05",
-            "name": "Investments",
-            "icon": "pi pi-chart-line",
-            "color": "#10B981",
-            "bgImage": "https://images.unsplash.com/photo-1611974714851-eb6053e62359?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-            "id": "cat_invest",
-            "userId": "user_01",
-            "name": "Investments",
-            "icon": "pi pi-chart-line",
-            "color": "#10B981",
-            "bgImage": "https://images.unsplash.com/photo-1611974714851-eb6053e62359?auto=format&fit=crop&w=400&q=80"
-        },
-        { "id": "cat_health", "userId": "user_01", "name": "Health & Fitness", "icon": "pi pi-heart", "color": "#EC4899", "bgImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438" },
-        { "id": "cat_shopping", "userId": "user_02", "name": "Shopping", "icon": "pi pi-shopping-bag", "color": "#EAB308", "bgImage": "https://images.unsplash.com/photo-1483985988355-763728e1935b" },
-        { "id": "cat_utilities", "userId": "user_03", "name": "Utilities", "icon": "pi pi-bolt", "color": "#6366F1", "bgImage": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e" },
-        { "id": "cat_travel", "userId": "user_04", "name": "Travel", "icon": "pi pi-send", "color": "#14B8A6", "bgImage": "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2" },
-        { "id": "cat_education", "userId": "user_05", "name": "Education", "icon": "pi pi-book", "color": "#F43F5E", "bgImage": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6" }
-    ],
-    "subscriptions": [
-        { "id": "sub_03", "userId": "user_01", "name": "ChatGPT Plus", "amount": 20.00, "frequency": "Monthly", "nextBillingDate": "2026-03-20", "categoryId": "cat_ent", "accountId": "acc_01", "active": true },
-        { "id": "sub_04", "userId": "user_02", "name": "Amazon Prime", "amount": 14.99, "frequency": "Monthly", "nextBillingDate": "2026-03-15", "categoryId": "cat_shopping", "accountId": "acc_02", "active": true },
-        { "id": "sub_05", "userId": "user_03", "name": "Gym Membership", "amount": 60.00, "frequency": "Monthly", "nextBillingDate": "2026-03-01", "categoryId": "cat_health", "accountId": "acc_03", "active": true },
-        { "id": "sub_06", "userId": "user_04", "name": "Adobe CC", "amount": 52.99, "frequency": "Monthly", "nextBillingDate": "2026-03-05", "categoryId": "cat_ent", "accountId": "acc_04", "active": true },
-        { "id": "sub_07", "userId": "user_05", "name": "WSJ Digital", "amount": 38.99, "frequency": "Monthly", "nextBillingDate": "2026-03-28", "categoryId": "cat_education", "accountId": "acc_05", "active": true },
-        { "id": "sub_08", "userId": "user_01", "name": "iCloud Storage", "amount": 9.99, "frequency": "Monthly", "nextBillingDate": "2026-03-14", "categoryId": "cat_utilities", "accountId": "acc_01", "active": true },
-        { "id": "sub_09", "userId": "user_02", "name": "Disney+", "amount": 10.99, "frequency": "Monthly", "nextBillingDate": "2026-03-10", "categoryId": "cat_ent", "accountId": "acc_02", "active": false },
-        { "id": "sub_10", "userId": "user_03", "name": "New York Times", "amount": 17.00, "frequency": "Monthly", "nextBillingDate": "2026-03-22", "categoryId": "cat_education", "accountId": "acc_03", "active": true },
-        { "id": "sub_11", "userId": "user_04", "name": "HelloFresh", "amount": 80.00, "frequency": "Weekly", "nextBillingDate": "2026-03-16", "categoryId": "cat_food", "accountId": "acc_04", "active": true },
-        { "id": "sub_12", "userId": "user_05", "name": "Peloton", "amount": 44.00, "frequency": "Monthly", "nextBillingDate": "2026-03-01", "categoryId": "cat_health", "accountId": "acc_05", "active": true }
-    ],
-    "transactions": [
-        { "id": "tx_201", "userId": "user_01", "amount": 12.50, "description": "Morning Coffee", "date": "2026-03-01T08:30:00Z", "categoryId": "cat_food", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_202", "userId": "user_01", "amount": 45.00, "description": "Gas Station", "date": "2026-03-02T17:45:00Z", "categoryId": "cat_transport", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_203", "userId": "user_02", "amount": 85.20, "description": "Grocery Haul", "date": "2026-03-02T12:00:00Z", "categoryId": "cat_food", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_204", "userId": "user_03", "amount": 120.00, "description": "Concert Tickets", "date": "2026-03-03T19:00:00Z", "categoryId": "cat_ent", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_205", "userId": "user_05", "amount": 250.00, "description": "Quarterly Dividend", "date": "2026-03-04T10:00:00Z", "categoryId": "cat_invest", "accountId": "acc_05", "type": "Income" },
-        { "id": "tx_206", "userId": "user_04", "amount": 45.00, "description": "Train Pass", "date": "2026-03-04T08:00:00Z", "categoryId": "cat_transport", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_207", "userId": "user_01", "amount": 5000.00, "description": "Monthly Salary", "date": "2026-03-01T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_01", "type": "Income" },
-        { "id": "tx_208", "userId": "user_02", "amount": 35.00, "description": "Cinema", "date": "2026-03-05T21:30:00Z", "categoryId": "cat_ent", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_209", "userId": "user_03", "amount": 65.40, "description": "Dinner Out", "date": "2026-03-05T20:00:00Z", "categoryId": "cat_food", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_210", "userId": "user_04", "amount": 20.00, "description": "Streaming Sub", "date": "2026-03-06T11:00:00Z", "categoryId": "cat_ent", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_211", "userId": "user_05", "amount": 1500.00, "description": "Crypto Gain", "date": "2026-03-06T15:00:00Z", "categoryId": "cat_invest", "accountId": "acc_05", "type": "Income" },
-        { "id": "tx_212", "userId": "user_01", "amount": 140.00, "description": "Electric Bill", "date": "2026-03-07T10:00:00Z", "categoryId": "cat_housing", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_213", "userId": "user_02", "amount": 4200.00, "description": "Monthly Salary", "date": "2026-03-01T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_02", "type": "Income" },
-        { "id": "tx_214", "userId": "user_03", "amount": 30.00, "description": "Taxi", "date": "2026-03-07T23:00:00Z", "categoryId": "cat_transport", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_215", "userId": "user_04", "amount": 55.00, "description": "Water Bill", "date": "2026-03-08T09:00:00Z", "categoryId": "cat_housing", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_216", "userId": "user_05", "amount": 300.00, "description": "New Desk Chair", "date": "2026-03-08T14:00:00Z", "categoryId": "cat_housing", "accountId": "acc_05", "type": "Expense" },
-        { "id": "tx_217", "userId": "user_01", "amount": 25.00, "description": "Lunch Special", "date": "2026-03-09T13:00:00Z", "categoryId": "cat_food", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_218", "userId": "user_02", "amount": 15.00, "description": "Parking Fee", "date": "2026-03-09T10:00:00Z", "categoryId": "cat_transport", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_219", "userId": "user_03", "amount": 6500.00, "description": "Consulting Fee", "date": "2026-03-01T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_03", "type": "Income" },
-        { "id": "tx_220", "userId": "user_04", "amount": 12.00, "description": "Bakery", "date": "2026-03-09T08:30:00Z", "categoryId": "cat_food", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_221", "userId": "user_01", "amount": 120.50, "description": "Whole Foods Market", "date": "2026-03-10T11:00:00Z", "categoryId": "cat_food", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_222", "userId": "user_01", "amount": 55.00, "description": "Steam Games", "date": "2026-03-10T22:30:00Z", "categoryId": "cat_ent", "accountId": "acc_07", "type": "Expense" },
-        { "id": "tx_223", "userId": "user_02", "amount": 210.00, "description": "Nike Store", "date": "2026-03-11T14:20:00Z", "categoryId": "cat_shopping", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_224", "userId": "user_02", "amount": 45.00, "description": "Shell Gas", "date": "2026-03-11T08:00:00Z", "categoryId": "cat_transport", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_225", "userId": "user_03", "amount": 1200.00, "description": "Monthly Rent", "date": "2026-03-01T00:00:00Z", "categoryId": "cat_housing", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_226", "userId": "user_03", "amount": 15.00, "description": "Starbucks", "date": "2026-03-12T09:15:00Z", "categoryId": "cat_food", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_227", "userId": "user_04", "amount": 350.00, "description": "Flight to Paris", "date": "2026-03-12T16:45:00Z", "categoryId": "cat_travel", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_228", "userId": "user_04", "amount": 25.00, "description": "Uber Ride", "date": "2026-03-12T23:10:00Z", "categoryId": "cat_transport", "accountId": "acc_10", "type": "Expense" },
-        { "id": "tx_229", "userId": "user_05", "amount": 1000.00, "description": "Stock Sale", "date": "2026-03-13T10:00:00Z", "categoryId": "cat_invest", "accountId": "acc_11", "type": "Income" },
-        { "id": "tx_230", "userId": "user_05", "amount": 150.00, "description": "Udemy Course", "date": "2026-03-13T11:00:00Z", "categoryId": "cat_education", "accountId": "acc_05", "type": "Expense" },
-        { "id": "tx_231", "userId": "user_01", "amount": 200.00, "description": "Pharmacy", "date": "2026-03-14T10:30:00Z", "categoryId": "cat_health", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_232", "userId": "user_01", "amount": 15.99, "description": "Netflix", "date": "2026-03-12T00:00:00Z", "categoryId": "cat_ent", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_233", "userId": "user_02", "amount": 12.99, "description": "Spotify", "date": "2026-03-01T00:00:00Z", "categoryId": "cat_ent", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_234", "userId": "user_02", "amount": 60.00, "description": "Zara", "date": "2026-03-14T15:00:00Z", "categoryId": "cat_shopping", "accountId": "acc_08", "type": "Expense" },
-        { "id": "tx_235", "userId": "user_03", "amount": 40.00, "description": "Water Bill", "date": "2026-03-15T09:00:00Z", "categoryId": "cat_utilities", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_236", "userId": "user_03", "amount": 80.00, "description": "Electric Bill", "date": "2026-03-15T09:00:00Z", "categoryId": "cat_utilities", "accountId": "acc_09", "type": "Expense" },
-        { "id": "tx_237", "userId": "user_04", "amount": 200.00, "description": "Airbnb Booking", "date": "2026-03-16T12:00:00Z", "categoryId": "cat_travel", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_238", "userId": "user_04", "amount": 18.50, "description": "Local Bistro", "date": "2026-03-16T19:00:00Z", "categoryId": "cat_food", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_239", "userId": "user_05", "amount": 3000.00, "description": "Consulting Pay", "date": "2026-03-15T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_05", "type": "Income" },
-        { "id": "tx_240", "userId": "user_05", "amount": 45.00, "description": "Yoga Class", "date": "2026-03-17T07:00:00Z", "categoryId": "cat_health", "accountId": "acc_05", "type": "Expense" },
-        { "id": "tx_241", "userId": "user_01", "amount": 35.00, "description": "Home Depot", "date": "2026-03-17T13:00:00Z", "categoryId": "cat_housing", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_242", "userId": "user_01", "amount": 10.00, "description": "Street Food", "date": "2026-03-18T18:00:00Z", "categoryId": "cat_food", "accountId": "acc_01", "type": "Expense" },
-        { "id": "tx_243", "userId": "user_02", "amount": 95.00, "description": "Cosmetic Shop", "date": "2026-03-18T11:00:00Z", "categoryId": "cat_shopping", "accountId": "acc_02", "type": "Expense" },
-        { "id": "tx_244", "userId": "user_02", "amount": 1500.00, "description": "Freelance Project", "date": "2026-03-19T10:00:00Z", "categoryId": "cat_invest", "accountId": "acc_08", "type": "Income" },
-        { "id": "tx_245", "userId": "user_03", "amount": 25.00, "description": "AMC Theatres", "date": "2026-03-19T20:00:00Z", "categoryId": "cat_ent", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_246", "userId": "user_03", "amount": 50.00, "description": "Uber Eats", "date": "2026-03-20T19:30:00Z", "categoryId": "cat_food", "accountId": "acc_03", "type": "Expense" },
-        { "id": "tx_247", "userId": "user_04", "amount": 12.00, "description": "Airport Snacks", "date": "2026-03-20T06:00:00Z", "categoryId": "cat_food", "accountId": "acc_10", "type": "Expense" },
-        { "id": "tx_248", "userId": "user_04", "amount": 30.00, "description": "Duty Free Shop", "date": "2026-03-20T07:00:00Z", "categoryId": "cat_shopping", "accountId": "acc_04", "type": "Expense" },
-        { "id": "tx_249", "userId": "user_05", "amount": 500.00, "description": "Dividends", "date": "2026-03-21T09:00:00Z", "categoryId": "cat_invest", "accountId": "acc_11", "type": "Income" },
-        { "id": "tx_250", "userId": "user_05", "amount": 20.00, "description": "Book Store", "date": "2026-03-21T15:00:00Z", "categoryId": "cat_education", "accountId": "acc_05", "type": "Expense" }
-    ]
+  "users": [
+    {
+      "id": "user_01",
+      "name": "Alex Doe",
+      "baseCurrency": "USD",
+      "monthlyIncome": 5000
+    },
+    {
+      "id": "user_02",
+      "name": "Maria Santos",
+      "baseCurrency": "CAD",
+      "monthlyIncome": 4200
+    },
+    {
+      "id": "user_03",
+      "name": "John Lee",
+      "baseCurrency": "USD",
+      "monthlyIncome": 6500
+    },
+    {
+      "id": "user_04",
+      "name": "Sophie Martin",
+      "baseCurrency": "EUR",
+      "monthlyIncome": 4800
+    },
+    {
+      "id": "user_05",
+      "name": "David Kim",
+      "baseCurrency": "USD",
+      "monthlyIncome": 7200
+    }
+  ],
+  "accounts": [
+    {
+      "id": "acc_01",
+      "userId": "user_01",
+      "name": "Main Checking",
+      "bank": "Chase",
+      "balance": 4250.75,
+      "type": "Checking",
+      "color": "#4F46E5"
+    },
+    {
+      "id": "acc_06",
+      "userId": "user_01",
+      "name": "Main Savings",
+      "bank": "RBC",
+      "balance": 15050.15,
+      "type": "Checking",
+      "color": "#4F46E5"
+    },
+    {
+      "id": "acc_02",
+      "userId": "user_02",
+      "name": "Savings Account",
+      "bank": "TD Canada Trust",
+      "balance": 8200.5,
+      "type": "Savings",
+      "color": "#10B981"
+    },
+    {
+      "id": "acc_03",
+      "userId": "user_03",
+      "name": "Business Account",
+      "bank": "Bank of America",
+      "balance": 15000,
+      "type": "Checking",
+      "color": "#F59E0B"
+    },
+    {
+      "id": "acc_04",
+      "userId": "user_04",
+      "name": "Primary Account",
+      "bank": "BNP Paribas",
+      "balance": 6100,
+      "type": "Checking",
+      "color": "#EF4444"
+    },
+    {
+      "id": "acc_05",
+      "userId": "user_05",
+      "name": "Investment Account",
+      "bank": "Wells Fargo",
+      "balance": 22000,
+      "type": "Investment",
+      "color": "#8B5CF6"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_transport",
+      "userId": "user_02",
+      "name": "Transport",
+      "icon": "pi pi-car",
+      "color": "#F97316",
+      "bgImage": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "cat_ent",
+      "userId": "user_03",
+      "name": "Entertainment",
+      "icon": "pi pi-video",
+      "color": "#8B5CF6",
+      "bgImage": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "cat_housing",
+      "userId": "user_01",
+      "name": "Housing",
+      "icon": "pi pi-home",
+      "color": "#3B82F6",
+      "bgImage": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "cat_food",
+      "userId": "user_01",
+      "name": "Food & Drink",
+      "icon": "pi pi-utensils",
+      "color": "#EF4444",
+      "bgImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "cat_invest",
+      "userId": "user_05",
+      "name": "Investments",
+      "icon": "pi pi-chart-line",
+      "color": "#10B981",
+      "bgImage": "https://images.unsplash.com/photo-1611974714851-eb6053e62359?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "cat_invest",
+      "userId": "user_01",
+      "name": "Investments",
+      "icon": "pi pi-chart-line",
+      "color": "#10B981",
+      "bgImage": "https://images.unsplash.com/photo-1611974714851-eb6053e62359?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "id": "cat_health",
+      "userId": "user_01",
+      "name": "Health & Fitness",
+      "icon": "pi pi-heart",
+      "color": "#EC4899",
+      "bgImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+    },
+    {
+      "id": "cat_shopping",
+      "userId": "user_02",
+      "name": "Shopping",
+      "icon": "pi pi-shopping-bag",
+      "color": "#EAB308",
+      "bgImage": "https://images.unsplash.com/photo-1483985988355-763728e1935b"
+    },
+    {
+      "id": "cat_utilities",
+      "userId": "user_03",
+      "name": "Utilities",
+      "icon": "pi pi-bolt",
+      "color": "#6366F1",
+      "bgImage": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e"
+    },
+    {
+      "id": "cat_travel",
+      "userId": "user_04",
+      "name": "Travel",
+      "icon": "pi pi-send",
+      "color": "#14B8A6",
+      "bgImage": "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2"
+    },
+    {
+      "id": "cat_education",
+      "userId": "user_05",
+      "name": "Education",
+      "icon": "pi pi-book",
+      "color": "#F43F5E",
+      "bgImage": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6"
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub_03",
+      "userId": "user_01",
+      "name": "ChatGPT Plus",
+      "amount": 20,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-20",
+      "categoryId": "cat_ent",
+      "accountId": "acc_01",
+      "active": true
+    },
+    {
+      "id": "sub_04",
+      "userId": "user_02",
+      "name": "Amazon Prime",
+      "amount": 14.99,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-15",
+      "categoryId": "cat_shopping",
+      "accountId": "acc_02",
+      "active": true
+    },
+    {
+      "id": "sub_05",
+      "userId": "user_03",
+      "name": "Gym Membership",
+      "amount": 60,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-01",
+      "categoryId": "cat_health",
+      "accountId": "acc_03",
+      "active": true
+    },
+    {
+      "id": "sub_06",
+      "userId": "user_04",
+      "name": "Adobe CC",
+      "amount": 52.99,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-05",
+      "categoryId": "cat_ent",
+      "accountId": "acc_04",
+      "active": true
+    },
+    {
+      "id": "sub_07",
+      "userId": "user_05",
+      "name": "WSJ Digital",
+      "amount": 38.99,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-28",
+      "categoryId": "cat_education",
+      "accountId": "acc_05",
+      "active": true
+    },
+    {
+      "id": "sub_08",
+      "userId": "user_01",
+      "name": "iCloud Storage",
+      "amount": 9.99,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-14",
+      "categoryId": "cat_utilities",
+      "accountId": "acc_01",
+      "active": true
+    },
+    {
+      "id": "sub_09",
+      "userId": "user_02",
+      "name": "Disney+",
+      "amount": 10.99,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-10",
+      "categoryId": "cat_ent",
+      "accountId": "acc_02",
+      "active": false
+    },
+    {
+      "id": "sub_10",
+      "userId": "user_03",
+      "name": "New York Times",
+      "amount": 17,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-22",
+      "categoryId": "cat_education",
+      "accountId": "acc_03",
+      "active": true
+    },
+    {
+      "id": "sub_11",
+      "userId": "user_04",
+      "name": "HelloFresh",
+      "amount": 80,
+      "frequency": "Weekly",
+      "nextBillingDate": "2026-03-16",
+      "categoryId": "cat_food",
+      "accountId": "acc_04",
+      "active": true
+    },
+    {
+      "id": "sub_12",
+      "userId": "user_05",
+      "name": "Peloton",
+      "amount": 44,
+      "frequency": "Monthly",
+      "nextBillingDate": "2026-03-01",
+      "categoryId": "cat_health",
+      "accountId": "acc_05",
+      "active": true
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx_202",
+      "userId": "user_01",
+      "amount": 45,
+      "description": "Gas Station",
+      "date": "2026-03-02T17:45:00Z",
+      "categoryId": "cat_transport",
+      "accountId": "acc_01",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_203",
+      "userId": "user_02",
+      "amount": 85.2,
+      "description": "Grocery Haul",
+      "date": "2026-03-02T12:00:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_204",
+      "userId": "user_03",
+      "amount": 120,
+      "description": "Concert Tickets",
+      "date": "2026-03-03T19:00:00Z",
+      "categoryId": "cat_ent",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_205",
+      "userId": "user_05",
+      "amount": 250,
+      "description": "Quarterly Dividend",
+      "date": "2026-03-04T10:00:00Z",
+      "categoryId": "cat_invest",
+      "accountId": "acc_05",
+      "type": "Income"
+    },
+    {
+      "id": "tx_206",
+      "userId": "user_04",
+      "amount": 45,
+      "description": "Train Pass",
+      "date": "2026-03-04T08:00:00Z",
+      "categoryId": "cat_transport",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_207",
+      "userId": "user_01",
+      "amount": 5000,
+      "description": "Monthly Salary",
+      "date": "2026-03-01T09:00:00Z",
+      "categoryId": "cat_invest",
+      "accountId": "acc_01",
+      "type": "Income"
+    },
+    {
+      "id": "tx_208",
+      "userId": "user_02",
+      "amount": 35,
+      "description": "Cinema",
+      "date": "2026-03-05T21:30:00Z",
+      "categoryId": "cat_ent",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_209",
+      "userId": "user_03",
+      "amount": 65.4,
+      "description": "Dinner Out",
+      "date": "2026-03-05T20:00:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_210",
+      "userId": "user_04",
+      "amount": 20,
+      "description": "Streaming Sub",
+      "date": "2026-03-06T11:00:00Z",
+      "categoryId": "cat_ent",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_211",
+      "userId": "user_05",
+      "amount": 1500,
+      "description": "Crypto Gain",
+      "date": "2026-03-06T15:00:00Z",
+      "categoryId": "cat_invest",
+      "accountId": "acc_05",
+      "type": "Income"
+    },
+    {
+      "id": "tx_213",
+      "userId": "user_02",
+      "amount": 4200,
+      "description": "Monthly Salary",
+      "date": "2026-03-01T09:00:00Z",
+      "categoryId": "cat_invest",
+      "accountId": "acc_02",
+      "type": "Income"
+    },
+    {
+      "id": "tx_214",
+      "userId": "user_03",
+      "amount": 30,
+      "description": "Taxi",
+      "date": "2026-03-07T23:00:00Z",
+      "categoryId": "cat_transport",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_215",
+      "userId": "user_04",
+      "amount": 55,
+      "description": "Water Bill",
+      "date": "2026-03-08T09:00:00Z",
+      "categoryId": "cat_housing",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_216",
+      "userId": "user_05",
+      "amount": 300,
+      "description": "New Desk Chair",
+      "date": "2026-03-08T14:00:00Z",
+      "categoryId": "cat_housing",
+      "accountId": "acc_05",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_217",
+      "userId": "user_01",
+      "amount": 25,
+      "description": "Lunch Special",
+      "date": "2026-03-09T13:00:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_01",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_218",
+      "userId": "user_02",
+      "amount": 15,
+      "description": "Parking Fee",
+      "date": "2026-03-09T10:00:00Z",
+      "categoryId": "cat_transport",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_219",
+      "userId": "user_03",
+      "amount": 6500,
+      "description": "Consulting Fee",
+      "date": "2026-03-01T09:00:00Z",
+      "categoryId": "cat_invest",
+      "accountId": "acc_03",
+      "type": "Income"
+    },
+    {
+      "id": "tx_220",
+      "userId": "user_04",
+      "amount": 12,
+      "description": "Bakery",
+      "date": "2026-03-09T08:30:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_221",
+      "userId": "user_01",
+      "amount": 120.5,
+      "description": "Whole Foods Market",
+      "date": "2026-03-10T11:00:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_01",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_223",
+      "userId": "user_02",
+      "amount": 210,
+      "description": "Nike Store",
+      "date": "2026-03-11T14:20:00Z",
+      "categoryId": "cat_shopping",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_224",
+      "userId": "user_02",
+      "amount": 45,
+      "description": "Shell Gas",
+      "date": "2026-03-11T08:00:00Z",
+      "categoryId": "cat_transport",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_225",
+      "userId": "user_03",
+      "amount": 1200,
+      "description": "Monthly Rent",
+      "date": "2026-03-01T00:00:00Z",
+      "categoryId": "cat_housing",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_226",
+      "userId": "user_03",
+      "amount": 15,
+      "description": "Starbucks",
+      "date": "2026-03-12T09:15:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_227",
+      "userId": "user_04",
+      "amount": 350,
+      "description": "Flight to Paris",
+      "date": "2026-03-12T16:45:00Z",
+      "categoryId": "cat_travel",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_230",
+      "userId": "user_05",
+      "amount": 150,
+      "description": "Udemy Course",
+      "date": "2026-03-13T11:00:00Z",
+      "categoryId": "cat_education",
+      "accountId": "acc_05",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_231",
+      "userId": "user_01",
+      "amount": 200,
+      "description": "Pharmacy",
+      "date": "2026-03-14T10:30:00Z",
+      "categoryId": "cat_health",
+      "accountId": "acc_01",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_232",
+      "userId": "user_01",
+      "amount": 15.99,
+      "description": "Netflix",
+      "date": "2026-03-12T00:00:00Z",
+      "categoryId": "cat_ent",
+      "accountId": "acc_01",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_233",
+      "userId": "user_02",
+      "amount": 12.99,
+      "description": "Spotify",
+      "date": "2026-03-01T00:00:00Z",
+      "categoryId": "cat_ent",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_235",
+      "userId": "user_03",
+      "amount": 40,
+      "description": "Water Bill",
+      "date": "2026-03-15T09:00:00Z",
+      "categoryId": "cat_utilities",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_237",
+      "userId": "user_04",
+      "amount": 200,
+      "description": "Airbnb Booking",
+      "date": "2026-03-16T12:00:00Z",
+      "categoryId": "cat_travel",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_238",
+      "userId": "user_04",
+      "amount": 18.5,
+      "description": "Local Bistro",
+      "date": "2026-03-16T19:00:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_239",
+      "userId": "user_05",
+      "amount": 3000,
+      "description": "Consulting Pay",
+      "date": "2026-03-15T09:00:00Z",
+      "categoryId": "cat_invest",
+      "accountId": "acc_05",
+      "type": "Income"
+    },
+    {
+      "id": "tx_240",
+      "userId": "user_05",
+      "amount": 45,
+      "description": "Yoga Class",
+      "date": "2026-03-17T07:00:00Z",
+      "categoryId": "cat_health",
+      "accountId": "acc_05",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_241",
+      "userId": "user_01",
+      "amount": 35,
+      "description": "Home Depot",
+      "date": "2026-03-17T13:00:00Z",
+      "categoryId": "cat_housing",
+      "accountId": "acc_01",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_243",
+      "userId": "user_02",
+      "amount": 95,
+      "description": "Cosmetic Shop",
+      "date": "2026-03-18T11:00:00Z",
+      "categoryId": "cat_shopping",
+      "accountId": "acc_02",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_245",
+      "userId": "user_03",
+      "amount": 25,
+      "description": "AMC Theatres",
+      "date": "2026-03-19T20:00:00Z",
+      "categoryId": "cat_ent",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_246",
+      "userId": "user_03",
+      "amount": 50,
+      "description": "Uber Eats",
+      "date": "2026-03-20T19:30:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_03",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_248",
+      "userId": "user_04",
+      "amount": 30,
+      "description": "Duty Free Shop",
+      "date": "2026-03-20T07:00:00Z",
+      "categoryId": "cat_shopping",
+      "accountId": "acc_04",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_250",
+      "userId": "user_05",
+      "amount": 20,
+      "description": "Book Store",
+      "date": "2026-03-21T15:00:00Z",
+      "categoryId": "cat_education",
+      "accountId": "acc_05",
+      "type": "Expense"
+    },
+    {
+      "id": "tx_242",
+      "userId": "user_01",
+      "amount": 10,
+      "description": "Street Food",
+      "date": "2026-03-18T18:00:00Z",
+      "categoryId": "cat_food",
+      "accountId": "acc_01",
+      "type": "Expense"
+    }
+  ]
 }

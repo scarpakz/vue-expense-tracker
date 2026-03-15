@@ -40,8 +40,21 @@
                         <td :class="['px-6 py-4 text-sm font-bold text-right', tx.type === 'Expense' ? 'text-rose-600' : 'text-emerald-600']">
                             {{ tx.type === 'Expense' ? '-' : '+' }}${{ Math.abs(tx.amount).toFixed(2) }}
                         </td>
-                        <td class="px-6 py-4 text-right">
-                            <button class="text-slate-400 hover:text-slate-600 transition-colors">
+                        <td class="px-6 py-4 text-right relative">
+                            <div 
+                            class="options-group z-90 flex justify-center bg-white rounded"
+                            v-show="isVisible(tx.id)"
+                            >
+                                <button class="cursor-pointer text-sm text-blue-500 hover:underline p-2">Edit</button>
+                                <button 
+                                class="cursor-pointer text-sm text-red-700 hover:underline p-2"
+                                @click="confirmDeletion(tx)"
+                                >Delete</button>
+                            </div>
+                            <button 
+                            class="text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"
+                            @click="toggleOption(tx.id)"
+                            >
                                 <i class="pi pi-ellipsis-v"></i>
                             </button>
                         </td>
@@ -65,9 +78,19 @@
         </div>
     </div>
 </template>
+<style scoped>
+.options-group {
+    position: absolute;
+    top: -20px;
+    left: -40px;
+    box-shadow: 2px 2px 4px #cbcbcb;
+}
+</style>
 <script setup>
 import { useDateFormatter } from '@/composable/dateFormatter.js'
 import { ref, computed, onMounted, watchEffect } from 'vue'
+import { API_DELETE_DETAIL_TRANSACTION } from '@/api/api.js'
+
 import Spinner from '@/components/Spinner.vue'
 
 const props = defineProps({
@@ -85,6 +108,7 @@ const tableResults = ref({
     max: 5,
     length: 24
 })
+const visibleIds = ref([])
 
 const getCategories = computed(() => {
     let filterPropByCategory = props.userTransactions.map(item => item.categoryName)
@@ -111,11 +135,42 @@ const setTransactionByCategory = () => {
     })
 }
 
+// TODO: add delete function
+// Fix Results table
 const filterBySearch = () => {
     transactions.value = transactions.value.filter((item) => {
         return item.description.toLowerCase().includes(textSearch.value.toLowerCase())
     })
     tableResults.value.length = transactions.value.length
+}
+
+const isVisible = (id) => {
+    return visibleIds.value.includes(id)
+}
+
+const toggleOption = (id) => {
+    const hasId = visibleIds.value.includes(id)
+    if (hasId) {
+        visibleIds.value = [...new Set(
+            visibleIds.value.filter(item => item !== id)
+        )]
+    } else {
+        visibleIds.value.push(id)
+    }
+}
+
+const confirmDeletion = (obj) => {
+    const isConfirmed = confirm(`Do you wish to delete ${obj.description}?`)
+    if (!isConfirmed){
+        toggleOption(obj.id)
+        return
+    }
+    deleteTransaction(obj)
+}
+
+const deleteTransaction = async (obj) => {
+    const response = await API_DELETE_DETAIL_TRANSACTION(obj)
+    return response
 }
 
 watchEffect(() => {
