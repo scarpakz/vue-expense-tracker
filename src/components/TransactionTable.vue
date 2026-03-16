@@ -54,7 +54,7 @@
                             </div>
                             <button 
                             class="text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"
-                            @click="toggleOption(tx.id)"
+                            @click.stop="toggleOption(tx.id)"
                             >
                                 <i class="pi pi-ellipsis-v"></i>
                             </button>
@@ -89,7 +89,7 @@
 </style>
 <script setup>
 import { useDateFormatter } from '@/composable/dateFormatter.js'
-import { ref, computed, onMounted, watchEffect } from 'vue'
+import { ref, computed, onMounted, watchEffect, onUnmounted } from 'vue'
 import { API_DELETE_DETAIL_TRANSACTION } from '@/api/api.js'
 import { useToast } from 'vue-toastification'
 
@@ -165,6 +165,7 @@ const toggleOption = (id) => {
 const confirmDeletion = (obj, e) => {
     e.preventDefault()
     const isConfirmed = confirm(`Do you wish to delete ${obj.description}?`)
+    toggleOption(obj.id)
     if (!isConfirmed) return
     deleteTransaction(obj, e)
 }
@@ -177,6 +178,12 @@ const deleteTransaction = async (obj, e) => {
     }
 }
 
+const closeAllMenus = (e) => {
+    if (!e.target.closest('.options-group') && !e.target.closest('.pi-ellipsis-v')) {
+        visibleIds.value = []
+    }
+}
+
 watchEffect(() => {
     setTransactionByCategory()
     filterBySearch()
@@ -184,5 +191,9 @@ watchEffect(() => {
 
 onMounted(()=> {
     setDefaultCategory()
+    window.addEventListener('click', closeAllMenus)
+})
+onUnmounted(() => {
+    window.removeEventListener('click', closeAllMenus)
 })
 </script>
