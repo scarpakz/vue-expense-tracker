@@ -14,7 +14,7 @@
                 <option v-for="cat in getCategories" :value="cat" :key="cat">{{ cat }}</option>
             </select>
         </div>
-        <div class="overflow-x-auto" v-if="getTransactions.length">
+        <div class="overflow-x-auto" v-if="transactions.length">
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-slate-50 text-slate-500 uppercase text-[11px] font-bold tracking-wider">
@@ -69,10 +69,19 @@
         <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between text-sm text-slate-500">
             <span>Showing {{ tableResults.min }} to {{ tableResults.max }} of {{ tableResults.length }} results</span>
             <div class="flex gap-2">
-                <button class="p-2 border border-slate-200 rounded hover:bg-slate-50 disabled:opacity-50" disabled>
+                <button 
+                    @click="setTableDisplay('prev')"
+                    :disabled="minCounter === 0"
+                    class="p-2 border border-slate-200 rounded hover:bg-slate-50 disabled:opacity-30"
+                >
                     <i class="pi pi-chevron-left text-xs"></i>
                 </button>
-                <button class="p-2 border border-slate-200 rounded hover:bg-slate-50">
+
+                <button 
+                    @click="setTableDisplay('next')"
+                    :disabled="maxCounter >= transactions.length - 1"
+                    class="p-2 border border-slate-200 rounded hover:bg-slate-50 disabled:opacity-30"
+                >
                     <i class="pi pi-chevron-right text-xs"></i>
                 </button>
             </div>
@@ -89,7 +98,7 @@
 </style>
 <script setup>
 import { useDateFormatter } from '@/composable/dateFormatter.js'
-import { ref, computed, onMounted, watchEffect, onUnmounted } from 'vue'
+import { ref, computed, onMounted, watchEffect, onUnmounted, watch } from 'vue'
 import { API_DELETE_DETAIL_TRANSACTION } from '@/api/api.js'
 import { useToast } from 'vue-toastification'
 
@@ -105,6 +114,7 @@ const toast = useToast()
 
 const selectedCategory = ref('')
 const transactions = ref([])
+const tableDisplay = ref([])
 const textSearch = ref('')
 const tableResults = ref({
     min: 1,
@@ -112,6 +122,9 @@ const tableResults = ref({
     length: 24
 })
 const visibleIds = ref([])
+const PAGE_SIZE = 5
+const minCounter = ref(0)
+const maxCounter = ref(PAGE_SIZE - 1)
 
 const getCategories = computed(() => {
     let filterPropByCategory = props.userTransactions.map(item => item.categoryName)
@@ -126,11 +139,11 @@ const setDefaultCategory = () => {
 }
 
 const getTransactions = computed(() => {
-    return transactions.value
+    return tableDisplay.value
 })
 
 const setTransactionByCategory = () => {
-    transactions.value = props.userTransactions.filter((item) => {
+    transactions.value = props.userTransactions.filter((item, idx) => {
         if (selectedCategory.value === 'All Categories') {
             return item
         }
@@ -138,8 +151,34 @@ const setTransactionByCategory = () => {
     })
 }
 
-// TODO: add delete function
-// Fix Results table
+const setTableDisplay = (action = 'initial') => {
+    // Update counters based on the button clicked
+    if (action === 'next') {
+        minCounter.value += PAGE_SIZE;
+        maxCounter.value += PAGE_SIZE;
+    } else if (action === 'prev') {
+        minCounter.value -= PAGE_SIZE;
+        maxCounter.value -= PAGE_SIZE;
+    } else {
+        // Reset to first page (used for initial load or search/filter)
+        minCounter.value = 0;
+        maxCounter.value = PAGE_SIZE - 1;
+    }
+
+    // Prevent "Previous" from going below index 0
+    if (minCounter.value < 0) {
+        minCounter.value = 0;
+        maxCounter.value = PAGE_SIZE - 1;
+    }
+
+    // Slice the master list into the display list
+    tableDisplay.value = transactions.value.slice(minCounter.value, maxCounter.value + 1);
+
+    // Update the "Showing X to Y" labels
+    tableResults.value.min = minCounter.value + 1;
+    tableResults.value.max = Math.min(maxCounter.value + 1, transactions.value.length);
+};
+
 const filterBySearch = () => {
     transactions.value = transactions.value.filter((item) => {
         return item.description.toLowerCase().includes(textSearch.value.toLowerCase())
@@ -183,6 +222,10 @@ const closeAllMenus = (e) => {
         visibleIds.value = []
     }
 }
+
+watch([transactions],() => {
+    setTableDisplay('initial')
+}, { immediate: true })
 
 watchEffect(() => {
     setTransactionByCategory()
