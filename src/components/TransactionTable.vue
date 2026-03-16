@@ -200,7 +200,7 @@ const toggleOption = (id) => {
         visibleIds.value.push(id)
     }
 }
-
+// replace with modal
 const confirmDeletion = (obj, e) => {
     e.preventDefault()
     const isConfirmed = confirm(`Do you wish to delete ${obj.description}?`)
@@ -208,6 +208,8 @@ const confirmDeletion = (obj, e) => {
     if (!isConfirmed) return
     deleteTransaction(obj, e)
 }
+
+// todo edit transaction description
 
 const deleteTransaction = async (obj, e) => {
     const response = await API_DELETE_DETAIL_TRANSACTION(obj)
