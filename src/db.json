@@ -679,16 +679,6 @@
       "categoryId": "cat_education",
       "accountId": "acc_05",
       "type": "Expense"
-    },
-    {
-      "id": "tx_242",
-      "userId": "user_01",
-      "amount": 10,
-      "description": "Street Food",
-      "date": "2026-03-18T18:00:00Z",
-      "categoryId": "cat_food",
-      "accountId": "acc_01",
-      "type": "Expense"
     }
   ]
 }

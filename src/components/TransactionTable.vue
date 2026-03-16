@@ -47,8 +47,9 @@
                             >
                                 <button class="cursor-pointer text-sm text-blue-500 hover:underline p-2">Edit</button>
                                 <button 
+                                type="button"
                                 class="cursor-pointer text-sm text-red-700 hover:underline p-2"
-                                @click="confirmDeletion(tx)"
+                                @click.prevent="confirmDeletion(tx, $event)"
                                 >Delete</button>
                             </div>
                             <button 
@@ -90,6 +91,7 @@
 import { useDateFormatter } from '@/composable/dateFormatter.js'
 import { ref, computed, onMounted, watchEffect } from 'vue'
 import { API_DELETE_DETAIL_TRANSACTION } from '@/api/api.js'
+import { useToast } from 'vue-toastification'
 
 import Spinner from '@/components/Spinner.vue'
 
@@ -99,6 +101,7 @@ const props = defineProps({
         default: []
     }
 })
+const toast = useToast()
 
 const selectedCategory = ref('')
 const transactions = ref([])
@@ -159,24 +162,25 @@ const toggleOption = (id) => {
     }
 }
 
-const confirmDeletion = (obj) => {
+const confirmDeletion = (obj, e) => {
+    e.preventDefault()
     const isConfirmed = confirm(`Do you wish to delete ${obj.description}?`)
-    if (!isConfirmed){
-        toggleOption(obj.id)
-        return
-    }
-    deleteTransaction(obj)
+    if (!isConfirmed) return
+    deleteTransaction(obj, e)
 }
 
-const deleteTransaction = async (obj) => {
+const deleteTransaction = async (obj, e) => {
     const response = await API_DELETE_DETAIL_TRANSACTION(obj)
-    return response
+    if (response) {
+        toast.success('Sucessfully Deleted!')
+        e.preventDefault()
+    }
 }
 
 watchEffect(() => {
     setTransactionByCategory()
     filterBySearch()
-}, [])
+})
 
 onMounted(()=> {
     setDefaultCategory()
