@@ -45,7 +45,12 @@
                             class="options-group z-90 flex justify-center bg-white rounded"
                             v-show="isVisible(tx.id)"
                             >
-                                <button class="cursor-pointer text-sm text-blue-500 hover:underline p-2">Edit</button>
+                                <button 
+                                class="cursor-pointer text-sm text-blue-500 hover:underline p-2"
+                                @click="showEditModal(tx.id)"
+                                >Edit
+                                </button>
+
                                 <button 
                                 type="button"
                                 class="cursor-pointer text-sm text-red-700 hover:underline p-2"
@@ -87,6 +92,7 @@
             </div>
         </div>
     </div>
+    <EditTableModal :data="t_detail_data" v-show="isShowModal" @close-modal="handleCloseModal()"/>
 </template>
 <style scoped>
 .options-group {
@@ -98,11 +104,12 @@
 </style>
 <script setup>
 import { useDateFormatter } from '@/composable/dateFormatter.js'
-import { ref, computed, onMounted, watchEffect, onUnmounted, watch } from 'vue'
+import { ref, reactive, computed, onMounted, watchEffect, onUnmounted, watch } from 'vue'
 import { API_DELETE_DETAIL_TRANSACTION } from '@/api/api.js'
 import { useToast } from 'vue-toastification'
 
 import Spinner from '@/components/Spinner.vue'
+import EditTableModal from '@/components/EditTableModal.vue'
 
 const props = defineProps({
     userTransactions: {
@@ -125,6 +132,9 @@ const visibleIds = ref([])
 const PAGE_SIZE = 5
 const minCounter = ref(0)
 const maxCounter = ref(PAGE_SIZE - 1)
+
+const t_detail_data = ref({})
+const isShowModal = ref(false)
 
 const getCategories = computed(() => {
     let filterPropByCategory = props.userTransactions.map(item => item.categoryName)
@@ -223,6 +233,19 @@ const closeAllMenus = (e) => {
     if (!e.target.closest('.options-group') && !e.target.closest('.pi-ellipsis-v')) {
         visibleIds.value = []
     }
+}
+
+const showEditModal = (id) => {
+    const data = tableDisplay.value.filter(item => item.id === id)
+    if (data.length > 0) { // if exists
+        isShowModal.value = true
+        visibleIds.value = []
+        t_detail_data.value = data[0]
+    }
+}
+
+const handleCloseModal = () => {
+    isShowModal.value = false
 }
 
 watch([transactions],() => {
