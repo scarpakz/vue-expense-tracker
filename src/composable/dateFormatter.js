@@ -25,15 +25,12 @@ export const useDateInputFormatter = (dateStr) => {
 }
 
 /**
- * Merges a new date with an existing timestamp
+ * Converts YYYY-MM-DD back to Full ISO String
  */
-export const mergeDateAndTime = (newDateStr, originalFullDate) => {
-    if (!newDateStr) return originalFullDate;
+export const useDateToISO = (dateStr) => {
+    if (!dateStr) return null;
     
-    // Get the time part from the original: "11:00:00Z"
-    const timePart = originalFullDate.split('T')[1]; 
-    
-    // Combine with the new date from the input: "2026-03-10"
-    return `${newDateStr}T${timePart}`;
-    // Result: "2026-03-10T11:00:00Z"
+    const date = new Date(dateStr);
+    return date.toISOString(); 
+    // Result: "2026-03-10T00:00:00.000Z"
 }

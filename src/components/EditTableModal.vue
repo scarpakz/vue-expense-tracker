@@ -3,8 +3,8 @@
         <div class="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
             <h2 id="modalTitle" class="text-xl font-bold text-gray-900 sm:text-2xl">Edit Transaction</h2>
             <div class="mt-4">
-                <p class="text-pretty text-gray-700">
-                    <form @submit.prevent="" class="space-y-6 max-w-lg mx-auto p-6 bg-white border border-slate-200 rounded-xl shadow-sm">
+                <div class="text-pretty text-gray-700">
+                    <form @submit.prevent="handleSubmit" method="post" class="space-y-6 max-w-lg mx-auto p-6 bg-white border border-slate-200 rounded-xl shadow-sm">
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-slate-700">Amount</label>
                             <div class="relative">
@@ -59,14 +59,13 @@
                         </div>
 
                         <div class="pt-4 flex justify-center gap-3">
-                            <!-- add loading -->
-                            <button v-if="!isLoading" class="cursor-pointer px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                            <button type="submit" v-if="!isLoading" class="cursor-pointer px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
                             Save Transaction
                             </button>
                             <Spinner v-else />
                         </div>
                     </form>
-                </p>
+                </div>
             </div>
             <footer class="mt-6 flex justify-end gap-2">
                 <button @click="handleConfirm(true)" type="button" class="cursor-pointer rounded bg-red-400 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-800">
@@ -78,10 +77,13 @@
 </template>
 <script setup>
 import {ref, computed, toRefs, reactive, watch, defineEmits} from 'vue'
-import { useDateInputFormatter } from '@/composable/dateFormatter';
+import { useDateInputFormatter, useDateToISO } from '@/composable/dateFormatter';
 import Spinner from './Spinner.vue';
+import { API_UPDATE_DETAIL_TRANSACTION } from '@/api/api'
+import { useToast } from 'vue-toastification';
 
 const emit = defineEmits(['closeModal'])
+const toast = useToast()
 const props = defineProps({
     data: {type: Object}
 })
@@ -91,7 +93,10 @@ const isLoading = ref(false)
 
 watch(() => props.data, (newVal) =>  {
     if (newVal) {
-        form = {...newVal, date: useDateInputFormatter(newVal.date)}
+        Object.assign(form, {
+            ...newVal,
+            date: useDateInputFormatter(newVal.date)
+        })
     }
 })
 
@@ -100,5 +105,23 @@ const handleConfirm = (isConfirmed) => {
         emit('closeModal')
     }
     return
+}
+
+const handleSubmit = async () => {
+    let convDate = useDateToISO(form.date)
+    const data = {...form, date: convDate}
+    try {
+        isLoading.value = true
+        const response = await API_UPDATE_DETAIL_TRANSACTION(data)
+        if (response) {
+            emit('closeModal')
+            toast.success('Updated Successfully!', {
+                timeout: 2000
+            })
+        }
+    } catch(e) { toast.error(e) }
+    finally {
+        isLoading.value = false
+    }
 }
 </script>
