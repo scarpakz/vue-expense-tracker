@@ -293,13 +293,13 @@
     {
       "id": "tx_202",
       "userId": "user_01",
-      "amount": "45",
+      "amount": 45,
       "description": "Gas Station",
       "date": "2026-03-23T00:00:00.000Z",
       "categoryId": "cat_transport",
       "accountId": "acc_01",
       "type": "Expense",
-      "categoryName": "Transport",
+      "categoryName": "Not Assigned",
       "bgImage": ""
     },
     {
@@ -345,7 +345,7 @@
     {
       "id": "tx_207",
       "userId": "user_01",
-      "amount": "8000",
+      "amount": 8000,
       "description": "Monthly Salary",
       "date": "2026-03-01T00:00:00.000Z",
       "categoryId": "cat_invest",

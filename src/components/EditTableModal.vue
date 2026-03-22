@@ -109,7 +109,7 @@ const handleConfirm = (isConfirmed) => {
 
 const handleSubmit = async () => {
     let convDate = useDateToISO(form.date)
-    const data = {...form, date: convDate}
+    const data = {...form, date: convDate, amount: Number(form.amount)}
     try {
         isLoading.value = true
         const response = await API_UPDATE_DETAIL_TRANSACTION(data)
