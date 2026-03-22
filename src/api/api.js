@@ -16,3 +16,11 @@ export const API_DELETE_DETAIL_TRANSACTION = async (obj) => {
 /**
  * Update single transaction
  */
+export const API_UPDATE_DETAIL_TRANSACTION = async (obj) => {
+    try {
+        const response = await axios.put(`${config.appBackend}/transactions/${obj.id}`, obj)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
