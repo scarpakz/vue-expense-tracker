@@ -33,12 +33,9 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                            <select v-model="form.category"
+                            <select v-model="form.categoryId"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                                <option value="food">Food</option>
-                                <option value="transport">Transport</option>
-                                <option value="utilities">Utilities</option>
-                                <option value="entertainment">Fun</option>
+                                <option v-for="i in getCategories" :key="i" :value="i.categoryId">{{ i.categoryName }}</option>
                             </select>
                         </div>
 
@@ -48,7 +45,14 @@
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                     </div>
-
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Background Image(Optional)</label>
+                        <div class="relative">
+                            <input v-model="form.bgImage" type="link"
+                                class="w-full pl-2 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                required />
+                        </div>
+                    </div>
                     <div class="flex gap-3 pt-4">
                         <button type="button" @click="isOpen = false"
                             class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
@@ -60,7 +64,6 @@
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -70,7 +73,11 @@
 import { 
     ref, 
     reactive,
+    computed
 } from 'vue';
+import { useTransactionStore } from '@/stores/transaction';
+import { useDateToISO } from '@/composable/dateFormatter';
+import { useToast } from 'vue-toastification';
 
 defineProps({
     isOpen: {
@@ -80,6 +87,8 @@ defineProps({
 })
 
 const emit = defineEmits(['prop-is-open'])
+const t_store = useTransactionStore()
+const toast = useToast()
 
 const emitToggle = () => {
     const isOpen = false
@@ -87,15 +96,32 @@ const emitToggle = () => {
 }
 
 const form = reactive({
-    amount: null,
+    amount: 0,
     description: '',
-    category: 'food',
+    categoryId: '',
+    bgImage: '',
     date: new Date().toISOString().substr(0, 10) // Defaults to today
 });
 
+const getCategories = computed(() => {
+    let filterPropByCategory = t_store.getUserTransactions.map(item => {
+        return {
+            categoryId: item.categoryId,
+            categoryName: item.categoryName
+        }
+    })
+    // Remove duplicates
+    const temp = [
+        ...new Map(filterPropByCategory.map(item => [item.categoryId, item])).values()
+    ]
+    if (temp.length > 0) {
+        form.categoryId = temp[0].categoryId
+    }
+    return temp
+})
+
 const handleSubmit = () => {
-    console.log('New Expense Data:', { ...form });
-    // Add your logic to push to a list or send to API here
+// TODO: add post request 
     isOpen.ref = false;
     // Reset form
     form.amount = null;

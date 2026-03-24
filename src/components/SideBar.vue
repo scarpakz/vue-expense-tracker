@@ -37,9 +37,7 @@
             </div>
             <div class="overflow-hidden">
               <p class="text-sm font-medium truncate">{{ props.user?.name }}</p>
-              <p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Premium</p>
             </div>
-            <i class="pi pi-sign-out ml-auto text-slate-500 hover:text-white cursor-pointer"></i>
           </div>
         </div>
       </div>
@@ -69,9 +67,7 @@ const isMobileMenuOpen = ref(false);
 
 const navItems = [
   { name: 'Dashboard', icon: 'pi-home', pathName: 'home' },
-  { name: 'Transactions', icon: 'pi-list', pathName: 'transactions' },
-  { name: 'Reports', icon: 'pi-chart-bar', pathName: 'reports' },
-  { name: 'Settings', icon: 'pi-cog', pathName: 'settings' },
+  { name: 'Transactions', icon: 'pi-list', pathName: 'transactions' }
 ];
 
 const initials = computed(() => {
