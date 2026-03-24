@@ -293,13 +293,13 @@
     {
       "id": "tx_202",
       "userId": "user_01",
-      "amount": "45",
+      "amount": 35,
       "description": "Gas Station",
       "date": "2026-03-23T00:00:00.000Z",
       "categoryId": "cat_transport",
       "accountId": "acc_01",
       "type": "Expense",
-      "categoryName": "Transport",
+      "categoryName": "Not Assigned",
       "bgImage": ""
     },
     {
@@ -345,7 +345,7 @@
     {
       "id": "tx_207",
       "userId": "user_01",
-      "amount": "8000",
+      "amount": 8000,
       "description": "Monthly Salary",
       "date": "2026-03-01T00:00:00.000Z",
       "categoryId": "cat_invest",
@@ -477,12 +477,14 @@
     {
       "id": "tx_221",
       "userId": "user_01",
-      "amount": 120.5,
+      "amount": 120,
       "description": "Whole Foods Market",
-      "date": "2026-03-10T11:00:00Z",
+      "date": "2026-03-10T00:00:00.000Z",
       "categoryId": "cat_food",
       "accountId": "acc_01",
-      "type": "Expense"
+      "type": "Expense",
+      "categoryName": "Food & Drink",
+      "bgImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
     },
     {
       "id": "tx_223",
