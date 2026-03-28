@@ -37,16 +37,7 @@
       "userId": "user_01",
       "name": "Main Checking",
       "bank": "Chase",
-      "balance": 4250.75,
-      "type": "Checking",
-      "color": "#4F46E5"
-    },
-    {
-      "id": "acc_06",
-      "userId": "user_01",
-      "name": "Main Savings",
-      "bank": "RBC",
-      "balance": 15050.15,
+      "balance": 4170.75,
       "type": "Checking",
       "color": "#4F46E5"
     },
@@ -695,6 +686,28 @@
       "categoryId": "cat_education",
       "accountId": "acc_05",
       "type": "Expense"
+    },
+    {
+      "userId": "user_01",
+      "id": 945,
+      "amount": 50,
+      "description": "Toyota",
+      "categoryId": "cat_ent",
+      "bgImage": "",
+      "type": "Expense",
+      "date": "2026-03-19",
+      "accountId": "acc_01"
+    },
+    {
+      "userId": "user_01",
+      "id": 2685,
+      "amount": 30,
+      "description": "Gas",
+      "categoryId": "cat_ent",
+      "bgImage": "",
+      "type": "Expense",
+      "date": "2026-03-28",
+      "accountId": "acc_01"
     }
   ]
 }
