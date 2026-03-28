@@ -50,11 +50,11 @@
                         <div class="relative">
                             <input v-model="form.bgImage" type="link"
                                 class="w-full pl-2 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
-                                required />
+                                />
                         </div>
                     </div>
                     <div class="flex gap-3 pt-4">
-                        <button type="button" @click="isOpen = false"
+                        <button type="button" @click="emitToggle()"
                             class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
                             Cancel
                         </button>
@@ -73,11 +73,12 @@
 import { 
     ref, 
     reactive,
-    computed
+    computed,
 } from 'vue';
 import { useTransactionStore } from '@/stores/transaction';
-import { useDateToISO } from '@/composable/dateFormatter';
 import { useToast } from 'vue-toastification';
+import { API_ADD_EXPENSE } from '@/api/api'
+import { useUserStore } from '@/stores/user'
 
 defineProps({
     isOpen: {
@@ -89,6 +90,7 @@ defineProps({
 const emit = defineEmits(['prop-is-open'])
 const t_store = useTransactionStore()
 const toast = useToast()
+const u_store = useUserStore()
 
 const emitToggle = () => {
     const isOpen = false
@@ -100,11 +102,14 @@ const form = reactive({
     description: '',
     categoryId: '',
     bgImage: '',
+    type: 'Expense',
     date: new Date().toISOString().substr(0, 10) // Defaults to today
 });
 
 const getCategories = computed(() => {
-    let filterPropByCategory = t_store.getUserTransactions.map(item => {
+    let filterPropByCategory = t_store.getUserTransactions
+    .filter(item => item.type === 'Expense' )
+    .map(item => {
         return {
             categoryId: item.categoryId,
             categoryName: item.categoryName
@@ -120,11 +125,19 @@ const getCategories = computed(() => {
     return temp
 })
 
-const handleSubmit = () => {
-// TODO: add post request 
-    isOpen.ref = false;
-    // Reset form
-    form.amount = null;
-    form.description = '';
-};
+const handleSubmit = async () => {
+    try {
+        const response = await API_ADD_EXPENSE(form, u_store.getUser.id)
+        if (!response) return
+        toast.success('Successfully added!')
+    } catch (e) {console.log(e)
+    } finally {
+        emitToggle()
+        // Reset form
+        form.amount = 0,
+        form.description = '',
+        form.bgImage = '',
+        form.date = new Date().toISOString().substr(0, 10)
+    }
+}
 </script>
