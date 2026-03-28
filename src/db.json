@@ -37,7 +37,7 @@
       "userId": "user_01",
       "name": "Main Checking",
       "bank": "Chase",
-      "balance": 4170.75,
+      "balance": 4140.75,
       "type": "Checking",
       "color": "#4F46E5"
     },
@@ -707,6 +707,17 @@
       "bgImage": "",
       "type": "Expense",
       "date": "2026-03-28",
+      "accountId": "acc_01"
+    },
+    {
+      "userId": "user_01",
+      "id": 4780,
+      "amount": 30,
+      "description": "Food for ebriwan",
+      "categoryId": "cat_food",
+      "bgImage": "",
+      "type": "Expense",
+      "date": "2026-03-01",
       "accountId": "acc_01"
     }
   ]
