@@ -14,6 +14,11 @@ npm install
 npm run dev
 ```
 
+### Run for mock up - back end data ( Check your port - if not working on :5000)
+```sh
+npm run server
+```
+
 ### Compile and Minify for Production
 
 ```sh
