@@ -5,7 +5,7 @@
           <RouterLink :to="{ name: 'transactions' }" class="text-sm text-emerald-600 font-semibold hover:underline">View All</RouterLink>
         </div>
         <div class="divide-y divide-slate-50">
-          <div v-for="item in userTransactions" :key="item.id"
+          <div v-for="item in latestTransactions" :key="item.id"
             class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
             <div class="flex items-center gap-4">
               <img :class="['w-10 h-10 rounded-lg flex items-center justify-center text-lg']" :src="item.bgImage" />
@@ -15,18 +15,26 @@
               </div>
             </div>
             <p :class="['font-bold text-sm', item.type === 'Expense' ? 'text-rose-600' : 'text-emerald-600']">
-              {{ item.type === 'Expense' ? '-' : '+' }}${{ Math.abs(item.amount) }}
+              {{ item.type === 'Expense' ? '-' : '+' }}${{ Math.abs(item.amount).toLocaleString() }}
             </p>
           </div>
         </div>
     </div>    
 </template>
 <script setup>
+import { computed } from 'vue';
 import { useDateFormatter } from '@/composable/dateFormatter';
-defineProps({
+
+const props = defineProps({
     userTransactions: {
         type: Array,
-        default: []
+        default: () => []
     }
+})
+
+const latestTransactions = computed(() => {
+    return [...props.userTransactions]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5)
 })
 </script>

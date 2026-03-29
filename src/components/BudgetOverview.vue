@@ -50,17 +50,29 @@ const handleTransactionUpdate = (data) => {
             'bg-cyan-500', 'bg-rose-500', 'bg-amber-500'
         ]
 
-        // TODO: Bug => duplicates on categories
-        const filterExpenseType = data.filter(item => item.type === 'Expense').map(num => num.amount)
-        const sum = filterExpenseType.reduce(sumUpExpenses, 0)
-        const addCalculatedPercentage = data.filter(item => item.type === 'Expense').map((transaction, index) => {
+        const expenses = data.filter(item => item.type === 'Expense')
+        const totalSum = expenses.reduce((acc, item) => acc + item.amount, 0)
+
+
+        const groupedMap = expenses.reduce((acc, item) => {
+            const key = item.categoryName || 'Not Assigned'
+            if (!acc[key]) {
+                acc[key] = { categoryName: key, amount: 0 }
+            }
+            acc[key].amount += item.amount
+            return acc
+        }, {})
+
+
+        const finalData = Object.values(groupedMap).map((category, index) => {
             return {
-                ...transaction,
-                percentage: Number(((transaction.amount / sum) * 100).toFixed(2)),
+                ...category,
+                percentage: Number(((category.amount / totalSum) * 100).toFixed(2)),
                 color: tailwindColors[index % tailwindColors.length]
             }
         })
-        newTransactionData.value = addCalculatedPercentage
+
+        newTransactionData.value = finalData
     }
 }
 
