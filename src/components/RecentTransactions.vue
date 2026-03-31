@@ -15,7 +15,7 @@
               </div>
             </div>
             <p :class="['font-bold text-sm', item.type === 'Expense' ? 'text-rose-600' : 'text-emerald-600']">
-              {{ item.type === 'Expense' ? '-' : '+' }}${{ Math.abs(item.amount).toLocaleString() }}
+              {{ item.type === 'Expense' ? '-' : '+' }}${{ Math.abs(item.amount)?.toLocaleString() }}
             </p>
           </div>
         </div>

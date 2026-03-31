@@ -25,7 +25,7 @@
         </div>
         <div>
           <p class="text-xs text-slate-500 font-bold uppercase tracking-tight">Total Balance</p>
-          <p class="text-xl font-bold text-slate-800">${{ s_user.getUser.balance.toLocaleString() }}</p>
+          <p class="text-xl font-bold text-slate-800">${{ s_user.getUser?.balance?.toLocaleString() ?? '0' }}</p>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
         </div>
         <div>
           <p class="text-xs text-slate-500 font-bold uppercase tracking-tight">Monthly Income</p>
-          <p class="text-xl font-bold text-slate-800">${{ s_user.getUser.monthlyIncome.toLocaleString() }}</p>
+          <p class="text-xl font-bold text-slate-800">${{ s_user.getUser?.monthlyIncome?.toLocaleString() ?? '0' }}</p>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
         </div>
         <div>
           <p class="text-xs text-slate-500 font-bold uppercase tracking-tight">Monthly Expenses</p>
-          <p class="text-xl font-bold text-slate-800">${{ monthlyExpensesTotal.toLocaleString(undefined, { minimumFractionDigits: 2 }) }}</p>
+          <p class="text-xl font-bold text-slate-800">${{ monthlyExpensesTotal?.toLocaleString(undefined, { minimumFractionDigits: 2 }) ?? '0.00' }}</p>
         </div>
       </div>
     </div>
