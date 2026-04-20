@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
     let user = reactive({})
     const mockup = reactive({
         userId: 'user_01',
-        isLoggedOn: true
+        isLoggedOn: false
     })
 
     // use functions for actions, e.g function ()

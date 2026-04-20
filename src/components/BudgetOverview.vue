@@ -21,11 +21,12 @@
         </div>
     </div>
     <div v-else>
-        <p>Loading data...</p>
+        <Spinner />
     </div>
 </template>
 <script setup>
 import { onMounted,ref, watch, computed } from 'vue'
+import Spinner from './Spinner.vue';
 
 const props = defineProps({
     userTransactions: {

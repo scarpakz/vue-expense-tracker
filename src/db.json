@@ -37,7 +37,7 @@
       "userId": "user_01",
       "name": "Main Checking",
       "bank": "Chase",
-      "balance": 4140.75,
+      "balance": 4106.75,
       "type": "Checking",
       "color": "#4F46E5"
     },
@@ -718,6 +718,17 @@
       "bgImage": "",
       "type": "Expense",
       "date": "2026-03-01",
+      "accountId": "acc_01"
+    },
+    {
+      "userId": "user_01",
+      "id": 9138,
+      "amount": 34,
+      "description": "fff",
+      "categoryId": "cat_food",
+      "bgImage": "",
+      "type": "Expense",
+      "date": "2026-04-20",
       "accountId": "acc_01"
     }
   ]

@@ -1,5 +1,5 @@
 <template>
-    <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" v-if="!isLoading">
         <div class="p-5 border-b border-slate-100 flex justify-between items-center">
           <h2 class="font-bold text-slate-800">Recent Transactions</h2>
           <RouterLink :to="{ name: 'transactions' }" class="text-sm text-emerald-600 font-semibold hover:underline">View All</RouterLink>
@@ -19,11 +19,15 @@
             </p>
           </div>
         </div>
-    </div>    
+    </div>
+    <div v-else>
+      <Spinner />
+    </div>
 </template>
 <script setup>
-import { computed } from 'vue';
-import { useDateFormatter } from '@/composable/dateFormatter';
+import { computed, ref, watch } from 'vue'
+import { useDateFormatter } from '@/composable/dateFormatter'
+import Spinner from './Spinner.vue'
 
 const props = defineProps({
     userTransactions: {
@@ -32,9 +36,19 @@ const props = defineProps({
     }
 })
 
+let isLoading = ref(true)
+
 const latestTransactions = computed(() => {
     return [...props.userTransactions]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .slice(0, 5)
+})
+
+watch(latestTransactions, () => {
+  if (props.userTransactions.length > 0) {
+    isLoading.value = false
+  } else {
+    isLoading.value = true
+  }
 })
 </script>
